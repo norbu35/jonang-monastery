@@ -11,18 +11,6 @@
 }
 
 @font-face {
-  font-family: "Noto Serif Tibetan";
-  src:
-    local("Noto Serif Tibetan Medium"),
-    local("NotoSerifTibetan-Medium"),
-    url("NotoSerifTibetan-Medium.woff2") format("woff2"),
-    url("NotoSerifTibetan-Medium.woff") format("woff");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Open Sans";
   src:
     local("Open Sans Regular"),
@@ -35,12 +23,8 @@
 }
 
 @font-face {
-  font-family: "Noto Serif Tibetan";
-  src:
-    local("Noto Serif Tibetan Regular"),
-    local("NotoSerifTibetan-Regular"),
-    url("NotoSerifTibetan-Regular.woff2") format("woff2"),
-    url("NotoSerifTibetan-Regular.woff") format("woff");
+  font-family: "Trirong";
+  src: url("Trirong-Regular.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -49,11 +33,8 @@
 @font-face {
   font-family: "Noto Serif Tibetan";
   src:
-    local("Noto Serif Tibetan SemiBold"),
-    local("NotoSerifTibetan-SemiBold"),
-    url("NotoSerifTibetan-SemiBold.woff2") format("woff2"),
-    url("NotoSerifTibetan-SemiBold.woff") format("woff");
-  font-weight: 600;
+  url("NotoSerifTibetan-VariableFont_wght.woff2") format("woff2");
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
 }
@@ -68,4 +49,12 @@
   font-weight: bold;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('Quicksand-VariableFont_wght.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
 }

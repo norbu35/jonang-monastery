@@ -1,8 +1,14 @@
 ---
 import { Image } from "astro:assets";
+
 import Header from "../components/Header.astro";
+import Card from "../components/Card.astro";
 import "../../base.css";
 
+import butterLamp from "../assets/images/butter-lamp.webp";
+import chantingTrio from "../assets/images/chanting-trio.jpg";
+import chantingDrums2 from "../assets/images/chanting-drums2.webp";
+import riteSutra from "../assets/images/rite-sutra.webp";
 import kalachakra from "../assets/icons/kalachakra.svg";
 ---
 
@@ -31,11 +37,68 @@ import kalachakra from "../assets/icons/kalachakra.svg";
       >
     </div>
     <Header />
+    <div class="bg-red-900 text-white">
+      <h1 class="py-12 text-center text-3xl">
+        Jonang Takten Phuntsok Choeling Monastery
+      </h1>
+    </div>
     <main>
+      <div class="card-section bg-gray-200">
+        <Card
+          imgSrc={chantingTrio}
+          header="The Jonang Doctrine"
+          body="Learn more about our philosophy and doctrine"
+        />
+        <Card
+          imgSrc={chantingDrums2}
+          header="Weekly Events"
+          body="Come and join our weekly activities which are open for visitors"
+        />
+        <Card
+          imgSrc={butterLamp}
+          header="Visitor's Guide"
+          body="Wanting to come visit us? Get all the info here"
+        />
+      </div>
       <section>
-        <div>The Jonang Doctrine</div>
-        <div>Visitor's Guide</div>
-        <div>Weekly Activities</div>
+        <Image src={riteSutra} alt="" />
+        <div class="bg-yellow-600 px-8 py-8 text-center text-white">
+          <h2 class="section-header">Welcome</h2>
+          <div class="my-10 font-garamond text-xl">
+            We are a Buddhist monastery situated in the serene landscapes of
+            Shimla, northern India, dedicated to preserving and propagating the
+            ancient Jonang tradition. Rooted in profound teachings, our
+            monastery, named Main Jonang Takten Phentsok Choeling, has a rich
+            history marked by the guidance of revered figures such as Lama Jinpa
+            Gyatso and successive abbots like Choeji Nangwa Rinpoche and Geshe
+            Kunga Rinchen. Embracing a comprehensive curriculum, we offer
+            studies in sutras and mantras, Tibetan calligraphy, English, Hindi,
+            mathematics, and physics. Our commitment extends beyond academic
+            pursuits, fostering both spiritual and intellectual growth for our
+            diverse student community. Join us on a transformative journey,
+            where tradition meets modern education in the heart of the
+            Himalayas.
+          </div>
+          <button class="h-12 w-44 rounded bg-red-900 font-opensans text-white"
+            >More About Us</button
+          >
+        </div>
+      </section>
+      <section class="px-8 py-8 text-center">
+        <h2 class="section-header">Activities</h2>
+        <div class="">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut iure
+          voluptatibus dicta sed tempore cumque omnis consequatur cupiditate
+          culpa? Sed doloribus eum dolorum placeat et quos quod non commodi
+          aliquam odit! Rerum non, voluptatibus quod consectetur debitis maiores
+          perspiciatis molestias!
+        </div>
+        <ul class="mt-8 border-2 py-2 text-center font-quicksand font-semibold">
+          <li>Weekly Activities</li>
+          <li>Annual Religious Activities</li>
+          <li>Studying Sutras</li>
+          <li>Kalachakra Retreat</li>
+        </ul>
       </section>
     </main>
   </body>

@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+
+const { imgSrc, header, body } = Astro.props;
+---
+
+<div class="w-full max-w-md md:w-60">
+  <a href="#"
+    ><Image
+      src={imgSrc}
+      alt=""
+      class="h-full rounded-md"
+      widths={[240, 440]}
+      sizes={`(max-width: 375px) 240px, (max-width:450px) 440px`}
+    />
+    <div class="bg-white p-6 text-center text-gray-600">
+      <div
+        class="py-4 font-quicksand text-xl font-semibold leading-tight md:h-12"
+      >
+        {header}
+      </div>
+      <div class="align-center hidden h-32 md:flex md:items-center">
+        {body}
+      </div>
+      <button aria-label="Learn More" class="primary-button">Learn More</button>
+    </div>
+  </a>
+</div>

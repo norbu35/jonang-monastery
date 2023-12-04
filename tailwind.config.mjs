@@ -5,6 +5,10 @@ export default {
     extend: {
       fontFamily: {
         "tibetan": ["Noto Serif Tibetan", "sans-serif"],
+        "quicksand": ["Quicksand", "sans-serif"],
+        "garamond": ["Cormorant Garamond", "serif"],
+        "opensans": ["Open Sans", "sans-serif"],
+        "trirong": ["Trirong", "serif"],
       },
       colors: {},
     },
