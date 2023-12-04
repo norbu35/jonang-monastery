@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import Header from "../components/Header.astro";
+import "../../base.css";
+
+import kalachakra from "../assets/icons/kalachakra.svg";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jonang Monastery</title>
+  </head>
+  <body>
+    <div
+      role="presentation"
+      class="flex h-screen bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:bg-[url('/src/assets/images/yard-ritual.webp')]"
+    >
+      <div
+        lang="bo"
+        class="height-4 absolute bottom-44 p-10 text-right font-tibetan text-4xl leading-relaxed text-white md:text-4xl"
+        aria-label="Name of the monastery in Tibetan"
+      >
+        ༄༅།། འཕགས་ཡུལ་ཇོ་ནང་མ་དགོན་རྟག་བརྟན་ཕུན་ཚོགས་ཆོས་གླིང་།
+      </div>
+      <button
+        class="absolute bottom-28 right-10 h-10 w-28 rounded-md border-[1px] border-white bg-red-900 text-lg text-white"
+        aria-label="Explore">Explore →</button
+      >
+    </div>
+    <Header />
+    <main>
+      <section>
+        <div>The Jonang Doctrine</div>
+        <div>Visitor's Guide</div>
+        <div>Weekly Activities</div>
+      </section>
+    </main>
+  </body>
+</html>

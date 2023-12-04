@@ -1,0 +1,11 @@
+@import "./src/assets/fonts/stylesheet.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .debug {
+    @apply border-[1px] border-red-500;
+  }
+}
