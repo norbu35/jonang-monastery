@@ -216,10 +216,10 @@ import donations from "../data/donations.json";
 </html>
 
 <script>
-  const rect = document.querySelector("#welcome").getBoundingClientRect();
+  const rect = document.querySelector("#welcome")!.getBoundingClientRect();
   const posY = rect.top + window.scrollY;
   const continueButton = document
-    .querySelector("#continue-button")
+    .querySelector("#continue-button")!
     .addEventListener("click", () =>
       window.scrollTo({
         top: posY,

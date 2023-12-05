@@ -35,7 +35,7 @@ import hamburgerMenu from "../assets/icons/hamburger-menu.svg";
 </header>
 
 <script>
-  const header = document.querySelector("#header");
+  const header = document.querySelector("#header")!;
 
   let prevScrollPos = window.scrollY;
   window.addEventListener("scroll", () => {
