@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  imgPath: string;
+  name: string;
+  role: string;
+  bio: string;
+}
+
+const { imgPath, name, role, bio } = Astro.props;
+
+const images = import.meta.glob("/src/assets/portraits/*.{jpg,jpeg}");
+---
+
+<div
+  class="mx-auto flex w-80 flex-col justify-center overflow-hidden rounded-lg bg-white p-4 text-center text-black"
+>
+  <div class="text-md font-semibold">{role}</div>
+  <div class="mb-4 text-lg font-bold">
+    {name}
+  </div>
+  <Image
+    src={images[imgPath]()}
+    alt={`Portrait of ${name}`}
+    class="mx-auto rounded-full"
+    width="130"
+  />
+  <p class="hidden">{bio}</p>
+  <button class="mx-auto mt-4 h-12 w-28 rounded bg-red-900 text-white"
+    >Biography</button
+  >
+</div>

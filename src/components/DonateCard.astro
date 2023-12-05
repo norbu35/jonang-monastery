@@ -1,0 +1,21 @@
+---
+interface Props {
+  name: string;
+  raised: number;
+  total: number;
+  donations: number;
+}
+
+const { name, raised, total, donations } = Astro.props;
+---
+
+<div
+  class="mx-auto flex max-w-md flex-col items-center gap-3 rounded p-6 shadow-[0px_0px_30px_20px_#dc262628]"
+>
+  <h3 class="mb-8 font-quicksand text-lg font-semibold">{name}</h3>
+  <button class="h-10 w-28 rounded-lg bg-yellow-500">Donate</button>
+  <div class="font-semibold">
+    <span class="text-yellow-500">${raised}</span> of ${total}<br />
+    <span class="text-yellow-500">{donations}</span> donations
+  </div>
+</div>
