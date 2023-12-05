@@ -31,4 +31,17 @@
   .debug {
     @apply [&>*]:border-[1px] [&>*]:border-red-500;
   }
+
+  .hide {
+    @apply max-h-0 opacity-0;
+  }
+
+  .parallax {
+    background-image: url("/src/assets/images/rite-sutra.webp");
+    min-height: 80vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 }
