@@ -24,7 +24,7 @@ const images = import.meta.glob("/src/assets/portraits/*.{jpg,jpeg}");
     src={images[imgPath]()}
     alt={`Portrait of ${name}`}
     class="mx-auto rounded-full"
-    width="150px"
+    width="150"
   />
   <p class="hidden">{bio}</p>
   <button class="mx-auto mt-4 h-12 w-28 rounded bg-red-900 text-white"
