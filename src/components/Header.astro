@@ -51,16 +51,15 @@ import hamburgerMenu from "../assets/icons/hamburger-menu.svg";
     header.classList.toggle("hide", !scrollingUp);
     header.setAttribute("aria-hidden", scrollingUp ? "false" : "true");
 
-    if (window.scrollY < 150) {
-      // topNavBar.classList.remove("hide");
-      // topNavBar.setAttribute("aria-hidden", "false");
-      // bottomNavBar.classList.add("hide");
-      // bottomNavBar.setAttribute("aria-hidden", "true");
-    } else {
-      // topNavBar.classList.add("hide");
-      // topNavBar.setAttribute("aria-hidden", "true");
-    }
-
     prevScrollPos = currentScrollPos;
   });
+
+  const rect = document.querySelector("#welcome")!.getBoundingClientRect();
+  const posY = rect.top + window.scrollY;
+  document.querySelector("#continue-button")!.addEventListener("click", () =>
+    window.scrollTo({
+      top: posY,
+      behavior: "smooth",
+    }),
+  );
 </script>
