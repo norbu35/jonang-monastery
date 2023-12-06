@@ -2,22 +2,19 @@
 import { Image } from "astro:assets";
 
 import Header from "../components/Header.astro";
-import Title from "../components/Title.astro";
-import Card from "../components/Card.astro";
-import NewsCard from "../components/NewsCard.astro";
-import BioCard from "../components/BioCard.astro";
-import DonationCard from "../components/DonateCard.astro";
+import TitleBanner from "../components/TitleBanner.astro";
+import HeroSection from "../layouts/HeroSection.astro";
+import NavigationSection from "../layouts/NavigationSection.astro";
+import WelcomeSection from "../layouts/WelcomeSection.astro";
+import ActivitiesSection from "../layouts/ActivitiesSection.astro";
+import TeachersSection from "../layouts/TeachersSection.astro";
+import DonateSection from "../layouts/DonateSection.astro";
+import NewsSection from "../layouts/NewsSection.astro";
 import Footer from "../components/Footer.astro";
-import "../../base.css";
 
-import butterLamp from "../assets/images/butter-lamp.webp";
-import chantingTrio from "../assets/images/chanting-trio.jpg";
-import chantingDrums2 from "../assets/images/chanting-drums2.webp";
 import riteSutra from "../assets/images/rite-sutra.webp";
-import kalachakra from "../assets/icons/kalachakra.svg";
 
-import teachers from "../data/teachers.json";
-import donations from "../data/donations.json";
+import "../../base.css";
 ---
 
 <!doctype html>
@@ -28,205 +25,22 @@ import donations from "../data/donations.json";
     <title>Jonang Monastery</title>
   </head>
   <body>
-    <div
-      class="flex h-screen bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:bg-[url('/src/assets/images/yard-ritual.webp')]"
-    >
-      <div
-        lang="bo"
-        class="height-4 absolute bottom-44 right-0 w-[295px] p-10 text-right font-tibetan text-4xl leading-relaxed text-white md:w-full md:text-center md:text-5xl"
-        aria-label="Name of the monastery in Tibetan"
-      >
-        ༄༅།། འཕགས་ཡུལ་ཇོ་ནང་མ་དགོན་རྟག་བརྟན་ཕུན་ཚོགས་ཆོས་གླིང་།
-      </div>
-      <button
-        id="continue-button"
-        class="absolute bottom-28 right-10 h-10 w-28 rounded-md border-[1px] border-white bg-red-900 text-lg text-white md:right-[20%] lg:right-1/2 lg:translate-x-[50%]"
-        aria-label="Explore">Explore →</button
-      >
-    </div>
     <Header />
+    <HeroSection />
     <main>
       <div class="bg-red-900 text-white">
         <h1 class="py-12 text-center text-3xl">
           Jonang Takten Phuntsok Choeling Monastery
         </h1>
       </div>
-      <blockquote
-        class="section-padding mx-auto max-w-xl px-8 font-garamond text-xl italic"
-      >
-        <p>
-          Nothing whatsoever to be removed, Not the slightest thing to be added.
-          Truly look at truth, and truth is seen.
-        </p>
-        <p class="mt-4">
-          When seen, it is complete liberation. The element is empty of
-          adventitious stains Which are characterized by their total emptiness,
-          But it is not empty of supreme qualities Which are characterized by
-          their inseparability.
-        </p>
-        <div class="mt-8 block text-right">The Uttaratantra</div>
-      </blockquote>
-      <div class="cards-flex section-padding bg-gray-200">
-        <Card
-          img={chantingTrio}
-          header="The Jonang Doctrine"
-          body="Learn more about our philosophy and doctrine"
-        />
-        <Card
-          img={chantingDrums2}
-          header="Weekly Events"
-          body="Come and join our weekly activities which are open for visitors"
-        />
-        <Card
-          img={butterLamp}
-          header="Visitor's Guide"
-          body="Wanting to come visit us? Get all the info here"
-        />
-      </div>
-      <section class="">
-        <!-- <Image src={riteSutra} alt="" /> -->
-        <div class="parallax"></div>
-        <div class="section-padding bg-yellow-600 text-white" id="welcome">
-          <Title title="Welcome" color="red" />
-          <p class="mx-auto text-center font-garamond text-xl lg:max-w-3xl">
-            We are a Buddhist monastery situated in the serene landscapes of
-            Shimla, northern India, dedicated to preserving and propagating the
-            ancient Jonang tradition. Rooted in profound teachings, our
-            monastery, named Main Jonang Takten Phentsok Choeling, has a rich
-            history marked by the guidance of revered figures such as Lama Jinpa
-            Gyatso and successive abbots like Choeji Nangwa Rinpoche and Geshe
-            Kunga Rinchen. Embracing a comprehensive curriculum, we offer
-            studies in sutras and mantras, Tibetan calligraphy, English, Hindi,
-            mathematics, and physics. Our commitment extends beyond academic
-            pursuits, fostering both spiritual and intellectual growth for our
-            diverse student community. Join us on a transformative journey,
-            where tradition meets modern education in the heart of the
-            Himalayas.
-          </p>
-          <button
-            class="mx-auto mt-8 block h-12 w-44 rounded bg-red-900 font-opensans text-white"
-            >More About Us</button
-          >
-        </div>
-      </section>
-      <section class="section-padding">
-        <Title title="Activities" color="darkgrey" />
-        <p class="mx-auto text-center lg:max-w-3xl">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut iure
-          voluptatibus dicta sed tempore cumque omnis consequatur cupiditate
-          culpa? Sed doloribus eum dolorum placeat et quos quod non commodi
-          aliquam odit! Rerum non, voluptatibus quod consectetur debitis maiores
-          perspiciatis molestias!
-        </p>
-        <div
-          role="button"
-          class="mx-auto mt-10 max-w-md rounded border-2 shadow-lg shadow-red-900/50 transition-shadow ease-in hover:cursor-pointer hover:shadow-red-900/80"
-        >
-          <ul class="py-4 text-center font-quicksand text-lg font-semibold">
-            <li>Puja & Sadhana</li>
-            <li class="mt-2">Annual Religious Events</li>
-            <li class="mt-2">Sutra Study</li>
-            <li class="mt-2">Kalachakra Retreat</li>
-          </ul>
-        </div>
-      </section>
-      <section class="section-padding bg-gray-200">
-        <Title title="Latest News" color="darkgrey" />
-        <div class="cards-grid pt-0 lg:grid-cols-4">
-          <NewsCard
-            img={butterLamp}
-            header="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
-            body="Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis."
-            date="12 December"
-          />
-          <NewsCard
-            img={butterLamp}
-            header="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
-            body="Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis."
-            date="12 December"
-          />
-          <NewsCard
-            img={butterLamp}
-            header="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
-            body="Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis."
-            date="12 December"
-          />
-          <NewsCard
-            img={butterLamp}
-            header="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
-            body="Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor minim nulla est proident. Nostrud officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex occaecat reprehenderit commodo officia dolor Lorem duis laboris cupidatat officia voluptate. Culpa proident adipisicing id nulla nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua reprehenderit commodo ex non excepteur duis sunt velit enim. Voluptate laboris sint cupidatat ullamco ut ea consectetur et est culpa et culpa duis."
-            date="12 December"
-          />
-        </div>
-      </section>
-      <section class="section-padding bg-red-900 text-white">
-        <Title title="Jonang Teachers" color="white" />
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {
-            teachers.map((item) => (
-              <BioCard
-                imgPath={item.imgPath}
-                name={item.name}
-                role={item.role}
-                bio={item.bio}
-              />
-            ))
-          }
-        </div>
-      </section>
-      <section class="section-padding bg-gray-100">
-        <Title title="Support Us" color="red" />
-        <div class="cards-grid">
-          {
-            donations.map((item) => (
-              <DonationCard
-                name={item.name}
-                raised={item.raised}
-                total={item.total}
-                donations={item.donations}
-              />
-            ))
-          }
-        </div>
-      </section>
-      <section class="section-padding bg-yellow-500 text-center">
-        <Title title="Newsletter" color="black" />
-        <p>
-          Want to receive news, tidbits, philosophy & more?<br /> Sign up for
-          our newsletter!
-        </p>
-        <form
-          action=""
-          class="mx-auto mt-6 max-w-md rounded-md bg-white p-4 shadow-md"
-        >
-          <div class="mb-4">
-            <label for="name" class="block text-gray-600">Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              class="w-full rounded-md border px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
-            />
-          </div>
-          <div class="mb-4">
-            <label for="email" class="block text-gray-600">Email</label>
-            <input
-              type="text"
-              name="email"
-              id="email"
-              class="w-full rounded-md border px-3 py-2 text-gray-700 focus:border-blue-500 focus:outline-none"
-            />
-          </div>
-          <button
-            type="submit"
-            class="focus:shadow-outline-blue rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:outline-none active:bg-blue-800"
-          >
-            Sign Up
-          </button>
-        </form>
-      </section>
-      <Footer />
+      <NavigationSection />
+      <WelcomeSection />
+      <ActivitiesSection />
+      <TeachersSection />
+      <NewsSection />
+      <DonateSection />
     </main>
+    <Footer />
   </body>
 </html>
 

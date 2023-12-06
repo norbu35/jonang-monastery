@@ -1,0 +1,25 @@
+---
+import Card from "../components/Card.astro";
+
+import butterLamp from "../assets/images/butter-lamp.webp";
+import chantingTrio from "../assets/images/chanting-trio.jpg";
+import chantingDrums2 from "../assets/images/chanting-drums2.webp";
+---
+
+<section class="cards-flex section-padding bg-gray-200">
+  <Card
+    img={chantingTrio}
+    header="The Jonang Doctrine"
+    body="Learn more about our philosophy and doctrine"
+  />
+  <Card
+    img={chantingDrums2}
+    header="Weekly Events"
+    body="Come and join our weekly activities which are open for visitors"
+  />
+  <Card
+    img={butterLamp}
+    header="Visitor's Guide"
+    body="Wanting to come visit us? Get all the info here"
+  />
+</section>
