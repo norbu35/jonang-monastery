@@ -23,6 +23,12 @@
 - Events (Current projects)
 - Payment (Paypal/card)
 
+# TODO
+
+## Teachers order
+
+Ask Nyamgal about the titles and orders of the teachers
+
 # Website tech stack
 
 ## Hosting
