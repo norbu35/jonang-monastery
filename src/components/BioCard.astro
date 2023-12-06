@@ -10,7 +10,7 @@ interface Props {
 
 const { imgPath, name, role, bio } = Astro.props;
 
-const images = import.meta.glob("/src/assets/portraits/*.{jpg,jpeg}");
+const images = import.meta.glob("/src/assets/portraits/*.jpg");
 ---
 
 <div

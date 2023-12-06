@@ -1,44 +1,47 @@
 ---
 import { Image } from "astro:assets";
 
-import logo from "../assets/icons/logo.webp";
+import kalachakraIcon from "../assets/icons/kalachakra-icon.webp";
+import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
 ---
 
-<footer
-  class="section-padding flex flex-col items-center gap-14 bg-gray-200 pb-4"
->
+<footer class="flex flex-col items-center gap-10 bg-gray-200 p-6 px-4 pb-4">
   <div class="flex flex-col items-center gap-2">
-    <Image class="mx-auto" src={logo} alt="" width="150" />
-    <div class="font-tibetan" lang="bo">ༀ་ཨཱཿཧཱུཾ་ཧོཿཧཾཀམལཝརཡཾ་ཧཱུཾ་ཕཊ།</div>
-    <div class="text-center text-xs">
-      May the sound of the Kalachakra mantra bring wisdom, compassion, and
+    <div class="flex flex-col gap-4 md:flex-row">
+      <Image class="mx-auto" src={kalachakraIcon} alt="" width="125" />
+      <Image class="mx-auto" src={kalachakraMantra} alt="" height="150" />
+    </div>
+    <div class="mt-2 max-w-[345px] text-center text-xs italic">
+      <div class="text-sx mb-2 font-bold not-italic">
+        Om Ha Ksha Ma La Va Ra Yang Svaha
+      </div>
+       May the sacred Kalachakra mantra bring wisdom, compassion, and
       enlightenment to all beings.
     </div>
   </div>
-  <div class="align-center flex flex-col text-sm md:flex-row md:gap-16">
+
+  <div class="flex flex-col items-center gap-6 md:flex-row md:gap-16">
     <div class="">
       <div class="leading-tight">
-        Jonang Takten Phuntsok Choeling<br />
-         Tibetan Buddhist Monastery,<br />
+        Jonang Takten Phuntsok Choeling<br /> Tibetan Buddhist Monastery,<br />
          Sanjauli 171006, Shimla,<br />
          Himachal Pradesh, INDIA
       </div>
       <div class="mt-2 leading-tight">
-        EMAIL: office@jonangmonastery.com<br />
-         PHONE: +91 177 2841410
+        EMAIL: office@jonangmonastery.com<br /> PHONE: +91 177 2841410
       </div>
     </div>
-    <button
-      class="text-bold mx-auto mt-8 h-12 w-32 rounded bg-yellow-500 text-lg"
+    <button class="text-bold h-10 w-32 rounded bg-yellow-500 text-lg"
       >Donate</button
     >
   </div>
+
   <div class="text-center text-sm">
-    <a href="#">Sitemap</a>
-    <span>|</span>
-    <a href="#">Cookie & Privacy Policy</a>
-  </div>
-  <div class="mt-[-2rem] text-xs md:text-sm">
-    &copy 2023 Jonang Monastery | made by norbu
+    <div>
+      <a href="#">Sitemap</a>
+      <span>|</span>
+      <a href="#">Cookie & Privacy Policy</a>
+    </div>
+    <div class="mt-2 text-sm">&copy 2023 Jonang Monastery | made by norbu</div>
   </div>
 </footer>
