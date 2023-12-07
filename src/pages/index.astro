@@ -86,16 +86,3 @@ import "../../base.css";
     <Footer />
   </body>
 </html>
-
-<script>
-  const rect = document.querySelector("#welcome")!.getBoundingClientRect();
-  const posY = rect.top + window.scrollY;
-  const continueButton = document
-    .querySelector("#continue-button")!
-    .addEventListener("click", () =>
-      window.scrollTo({
-        top: posY,
-        behavior: "smooth",
-      }),
-    );
-</script>

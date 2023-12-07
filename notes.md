@@ -51,16 +51,9 @@ AstroJS - works well with the CMS, is extensible and fast.
 ## Sitemap
 
 <about-us>
-    <jonang-doctrine>
-        <jonang-history>
-            <jonang-lineage>
-                <buddha-dolpa>
-                <yogi-taranath />
-            <jonang-lineage />
-        <jonang-history />
-    <jonang-doctrine />
     <jonang-choeling-history />
     <teachers />
+    <curriculum />
     <our-administration>
         <cultural-society />
         <monastery />
@@ -71,8 +64,17 @@ AstroJS - works well with the CMS, is extensible and fast.
     <dharma-centre>
         <delhi-house />
         <arunachal-society />
-    <dharma-centre />
+    </dharma-centre>
 </about-us>
+<jonang-doctrine>
+    <jonang-history>
+        <jonang-lineage>
+            <buddha-dolpa>
+            <yogi-taranath />
+        <jonang-lineage />
+    <jonang-history />
+    <philosophy />
+</jonang-doctrine>
 <news />
 <events>
     <weekly-activities />

@@ -25,6 +25,10 @@
   .section-header {
     @apply mb-10 font-quicksand text-2xl md:text-3xl font-semibold text-center md:mb-12 lg:text-4xl lg:mb-24;
   }
+
+  .article-container {
+    @apply p-6;
+  }
 }
 
 @layer utilities {

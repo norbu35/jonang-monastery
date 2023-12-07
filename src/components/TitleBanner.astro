@@ -1,0 +1,13 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div
+  class="flex h-40 items-center justify-center bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center"
+>
+  <h1 class="text-center font-quicksand text-4xl text-white">{title}</h1>
+</div>

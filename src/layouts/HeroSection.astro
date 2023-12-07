@@ -1,5 +1,10 @@
+---
+import { Image } from "astro:assets";
+import downArrow from "/src/assets/icons/down-arrow.svg";
+---
+
 <div
-  class="flex h-screen bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:bg-[url('/src/assets/images/yard-ritual.webp')]"
+  class="flex h-screen flex-col justify-end bg-[url('/src/assets/images/vajra-bell.webp')] bg-cover bg-center md:bg-[url('/src/assets/images/yard-ritual.webp')]"
 >
   <div
     lang="bo"
@@ -10,7 +15,19 @@
   </div>
   <button
     id="continue-button"
-    class="absolute bottom-28 right-10 h-10 w-28 rounded-md border-[1px] border-white bg-red-900 text-lg text-white md:right-[20%] lg:right-1/2 lg:translate-x-[50%]"
-    aria-label="Explore">Explore →</button
+    class="mb-20 flex h-12 justify-center text-white"
+    aria-label="Continue"
+    ><Image src={downArrow} alt="" width="50" class="animate-bounce" /></button
   >
 </div>
+
+<script>
+  const rect = document.querySelector("#welcome")!.getBoundingClientRect();
+  const posY = rect.top + window.scrollY;
+  document.querySelector("#continue-button")!.addEventListener("click", () =>
+    window.scrollTo({
+      top: posY,
+      behavior: "smooth",
+    }),
+  );
+</script>
