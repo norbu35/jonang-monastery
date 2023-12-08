@@ -16,18 +16,20 @@ const images = import.meta.glob("/src/assets/portraits/*.jpg");
 <div
   class="mx-auto flex w-80 flex-col justify-center overflow-hidden rounded-lg bg-white p-4 text-center text-black"
 >
-  <div class="text-md font-semibold">{role}</div>
-  <div class="mb-4 text-lg font-bold">
-    {name}
+  <div>
+    <pre class="font-quicksand font-semibold">{role}</pre>
+    <div class="mb-4 text-lg font-bold">
+      {name}
+    </div>
+    <Image
+      src={images[imgPath]()}
+      alt={`Portrait of ${name}`}
+      class="mx-auto rounded-full"
+      height="250"
+    />
+    <p class="hidden">{bio}</p>
+    <button class="mx-auto mt-4 h-12 w-28 rounded bg-red-900 text-white"
+      >Biography</button
+    >
   </div>
-  <Image
-    src={images[imgPath]()}
-    alt={`Portrait of ${name}`}
-    class="mx-auto rounded-full"
-    width="150"
-  />
-  <p class="hidden">{bio}</p>
-  <button class="mx-auto mt-4 h-12 w-28 rounded bg-red-900 text-white"
-    >Biography</button
-  >
 </div>
