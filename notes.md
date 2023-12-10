@@ -1,34 +1,3 @@
-# Meeting topics
-
-## Contact persons
-
-- Who will write content?
-- Who can make updates to the website?
-- Who can provide photos?
-- Contact person who knows about the monastery
-
-## Costs
-
-- Hosting
-
-## Current website
-
-- Contact person
-
-## Website content
-
-- About us (History, Staff, Studies, Events etc)
-- Administration?
-- News (updates on projects, teachings through mailing list)
-- Events (Current projects)
-- Payment (Paypal/card)
-
-# TODO
-
-## Teachers order
-
-Ask Nyamgal about the titles and orders of the teachers
-
 # Website tech stack
 
 ## Hosting
@@ -85,3 +54,11 @@ AstroJS - works well with the CMS, is extensible and fast.
 <visitors-guide />
 <support-us />
 <contact />
+
+# TODO
+
+## CMS
+
+## a11y
+
+## SEO
