@@ -62,3 +62,5 @@ AstroJS - works well with the CMS, is extensible and fast.
 ## a11y
 
 ## SEO
+
+## Newsletter
