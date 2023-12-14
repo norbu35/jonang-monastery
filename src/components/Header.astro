@@ -1,8 +1,21 @@
 ---
 import { Image } from "astro:assets";
+import type { Header } from "../../payload-types";
 
 import logo from "../assets/icons/logo.webp";
 import hamburgerMenu from "../assets/icons/hamburger-menu.svg";
+
+let navLinks;
+try {
+  const response = await fetch(`${import.meta.env.CMS_API_URL}/globals/header`);
+  if (!response.ok) {
+    throw Error("error fetching data");
+  }
+  const data: Header = await response.json();
+  navLinks = data.navigation;
+} catch (error: any) {
+  throw Error(error.message);
+}
 ---
 
 <header
@@ -23,12 +36,13 @@ import hamburgerMenu from "../assets/icons/hamburger-menu.svg";
     class="hidden font-quicksand font-semibold text-gray-600 md:mr-2 md:block xl:mr-12 xl:text-xl"
   >
     <ul class="items-center gap-3 md:flex lg:gap-4 xl:gap-6">
-      <li><a href="/about-us/">About Us</a></li>
-      <li>News</li>
-      <li>Events</li>
-      <li>Visitor's Guide</li>
-      <li>Support Us</li>
-      <li>Contact</li>
+      {
+        navLinks.map((field: any) => (
+          <li>
+            <a href={`/${field.page.slug}`}>{field.page.title}</a>
+          </li>
+        ))
+      }
       <button class="hidden h-12 w-32 rounded bg-yellow-500 text-white lg:block"
         >Donate</button
       >

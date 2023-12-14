@@ -1,11 +1,10 @@
 ---
-import quotes from "../data/quotes.json";
+import type { Quote } from "../../payload-types.ts";
 
-interface Props {
-  quoteIdx: number;
-}
-
-const { quoteIdx } = Astro.props;
+const response = await fetch(`${import.meta.env.CMS_API_URL}/quotes`);
+const data = await response.json();
+const quotes: Quote[] = data.docs;
+const quote: Quote = quotes[Math.floor(Math.random() * data.totalDocs)];
 ---
 
 <figure
@@ -14,10 +13,18 @@ const { quoteIdx } = Astro.props;
   <blockquote
     class="flex flex-col items-center justify-center gap-6 md:flex-row lg:gap-8 xl:gap-24"
   >
-    <pre><p lang="bo" class="font-tibetan text-lg md:text-xl">{quotes[quoteIdx].tibetan}</p></pre>
-    <pre><p class="font-garamond">{quotes[quoteIdx].english}</p></pre>
+    {
+      quote?.originalQuoteHtml ? (
+        <div
+          set:html={quote?.originalQuoteHtml}
+          lang={quote.originalQuoteLang}
+          class="font-tibetan text-lg md:text-xl"
+        />
+      ) : null
+    }
+    <div set:html={quote?.quoteHtml} class="font-garamond" />
   </blockquote>
   <figcaption class="mt-6 text-right font-garamond text-lg md:mt-16 md:text-xl">
-    <cite>{quotes[quoteIdx].source}</cite>
+    <cite>{quote?.source}</cite>
   </figcaption>
 </figure>

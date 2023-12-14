@@ -2,7 +2,9 @@
 
 ## Hosting
 
-Probably AWS
+- MongoDB Atlas - free
+- Netlify/Vercel - free
+- DigitalOcean - $4/month
 
 ## CMS
 
