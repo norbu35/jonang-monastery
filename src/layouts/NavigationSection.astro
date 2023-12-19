@@ -1,25 +1,30 @@
 ---
 import Card from "../components/Card.astro";
 
-import chantingTrio from "../assets/images/chanting-trio.jpg";
-import teacherLibrary from "../assets/images/teacher-library.webp";
-import butterLamp from "../assets/images/butter-lamp.webp";
+let cards;
+try {
+  const response = await fetch(`${import.meta.env.CMS_API_URL}/cards`);
+
+  if (!response.ok) {
+    throw Error("Error fetching data.");
+  }
+
+  const data = await response.json();
+  cards = data.docs;
+} catch (error: any) {
+  throw Error(error);
+}
 ---
 
 <section class="cards-flex section-padding bg-gray-200">
-  <Card
-    img={chantingTrio}
-    header="The Jonang Doctrine"
-    body="Learn more about our philosophy and doctrine"
-  />
-  <Card
-    img={teacherLibrary}
-    header="Weekly Events"
-    body="Come and join our weekly activities which are open for visitors"
-  />
-  <Card
-    img={butterLamp}
-    header="Visitor's Guide"
-    body="Wanting to come visit us? Get all the info here"
-  />
+  {
+    cards.map((card: any) => (
+      <Card
+        img={card.image.sizes.thumbnail.url}
+        header={card.header}
+        body={card.body}
+        link={`/${card.link.slug}`}
+      />
+    ))
+  }
 </section>

@@ -2,16 +2,17 @@
 import { Image } from "astro:assets";
 
 interface Props {
-  img: ImageMetadata;
+  img: string;
   header: string;
   body: string;
+  link: string;
 }
 
-const { img, header, body } = Astro.props;
+const { img, header, body, link } = Astro.props;
 ---
 
 <div class="w-full max-w-xs">
-  <a href="#">
+  <a href={link}>
     <div class="relative">
       <svg
         class="absolute bottom-[-15px] left-2/4 mx-auto w-20 translate-x-[-50%]"
@@ -34,9 +35,9 @@ const { img, header, body } = Astro.props;
       <Image
         src={img}
         alt=""
+        width="400"
+        height="300"
         class="h-full rounded-md"
-        widths={[240, 440]}
-        sizes={`(max-width: 375px) 240px, (max-width:450px) 440px`}
       />
     </div>
     <div class="bg-white p-6 text-center text-gray-600">
@@ -45,10 +46,14 @@ const { img, header, body } = Astro.props;
       >
         {header}
       </div>
-      <div class="align-center hidden h-32 md:flex md:items-center">
+      <div
+        class="align-center hidden h-32 overflow-hidden md:flex md:items-center"
+      >
         {body}
       </div>
-      <button aria-label="Learn More" class="primary-button">Learn More</button>
+      <button aria-label="Learn More" class="primary-button"
+        ><a href={link}>Learn More</a></button
+      >
     </div>
   </a>
 </div>

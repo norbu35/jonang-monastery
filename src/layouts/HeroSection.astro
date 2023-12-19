@@ -1,6 +1,9 @@
 ---
 import { Image } from "astro:assets";
 import downArrow from "/src/assets/icons/down-arrow.svg";
+
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/pageTitle`);
+const title = await res.json();
 ---
 
 <div
@@ -10,9 +13,8 @@ import downArrow from "/src/assets/icons/down-arrow.svg";
     lang="bo"
     class="height-4 absolute bottom-44 right-0 w-[295px] p-10 text-right font-tibetan text-4xl leading-relaxed text-white md:w-full md:text-center md:text-5xl"
     aria-label="Name of the monastery in Tibetan"
-  >
-    ༄༅།། འཕགས་ཡུལ་ཇོ་ནང་མ་དགོན་རྟག་བརྟན་ཕུན་ཚོགས་ཆོས་གླིང་།
-  </div>
+    set:html={title.title}
+  />
   <button
     id="continue-button"
     class="mb-20 flex h-12 justify-center text-white"

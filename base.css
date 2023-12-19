@@ -1,6 +1,21 @@
 @import "./src/assets/fonts/stylesheet.css";
 
 @tailwind base;
+
+@layer base {
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  h4 {
+    @apply text-lg;
+  }
+}
+
 @tailwind components;
 
 @tailwind utilities;
