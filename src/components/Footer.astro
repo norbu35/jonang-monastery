@@ -1,9 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import type { Footer } from "../../payload-types";
 
 import kalachakraIcon from "../assets/icons/kalachakra-icon.webp";
 import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
 import NewsLetter from "./NewsLetter.astro";
+
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/footer`);
+const data: Footer = await res.json();
 ---
 
 <NewsLetter />
@@ -20,22 +24,16 @@ import NewsLetter from "./NewsLetter.astro";
         <div class="text-sx mb-2 font-bold not-italic">
           OṂ HA KṢA MA LA VA RA YA SVĀHĀ
         </div>
-         May the resonant power of the Kalachakra mantra radiate wisdom,
-        compassion, and enlightenment, fostering Bodhicitta to bring liberation
-        to all beings.
+        {data.blessing}
       </div>
     </div>
 
     <div class="flex flex-col items-center gap-6 text-sm md:flex-row md:gap-16">
       <address class="not-italic">
-        <div class="leading-tight">
-          Jonang Takten Phuntsok Choeling<br /> Tibetan Buddhist Monastery,<br
-          />
-           Sanjauli, Shimla,<br />
-           Himachal Pradesh 171006, INDIA
-        </div>
+        <div class="leading-tight" set:html={data.addressHtml} />
         <div class="mt-4 leading-tight">
-          EMAIL: office@jonangmonastery.com<br /> PHONE: +91 177 2841410
+          {data.email}<br />
+          {data.phone}
         </div>
       </address>
       <button
