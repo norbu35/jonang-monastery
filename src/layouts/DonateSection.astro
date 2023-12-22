@@ -2,19 +2,22 @@
 import Title from "../components/Title.astro";
 import DonateCard from "../components/DonateCard.astro";
 
-import donations from "../data/donations.json";
+import type { Donation } from "../../payload-types";
+
+const res = await fetch(`${import.meta.env.CMS_API_URL}/donations`);
+const data = await res.json();
 ---
 
 <section class="section-padding bg-gray-100">
   <Title title="Support Us" color="red" />
   <div class="cards-grid">
     {
-      donations.map((item) => (
+      data.docs.map((item: Donation) => (
         <DonateCard
-          name={item.name}
-          raised={item.raised}
-          total={item.total}
-          donations={item.donations}
+          headline={item.headline}
+          goal={item.goal}
+          description={item.description}
+          img={item.image}
         />
       ))
     }

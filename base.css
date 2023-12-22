@@ -22,7 +22,11 @@
 
 @layer components {
   .primary-button {
-    @apply mx-auto hidden h-10 w-32 rounded bg-orange-600 font-opensans text-sm text-white md:block;
+    @apply hover:bg-red-800 focus:shadow-red-900 focus:outline-none active:bg-red-900 mx-auto h-10 w-28 rounded-xl bg-red-900 font-opensans my-4 text-white;
+  }
+
+  .secondary-button {
+    @apply mx-auto h-10 w-28 rounded-xl bg-yellow-600 font-opensans my-4 hover:bg-yellow-500 focus:shadow-yellow-600 focus:outline-none active:bg-yellow-500 text-white;
   }
 
   .cards-flex {
@@ -30,7 +34,7 @@
   }
 
   .cards-grid {
-    @apply grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3;
+    @apply grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 place-items-center;
   }
 
   .section-padding {

@@ -1,35 +1,49 @@
 ---
 import { Image } from "astro:assets";
+import type { Media } from "../../payload-types";
 
 interface Props {
-  imgPath: string;
+  img: Media | string;
   name: string;
-  role: string;
+  roles: {
+    role?: string | null | undefined;
+    id?: string | null | undefined;
+  }[];
   bio: string;
 }
 
-const { imgPath, name, role, bio } = Astro.props;
-
-const images = import.meta.glob("/src/assets/portraits/*.jpg");
+const { img, name, roles, bio } = Astro.props;
 ---
 
 <div
-  class="mx-auto flex w-80 flex-col justify-center overflow-hidden rounded-lg bg-white p-4 text-center text-black"
+  class="mx-auto flex w-72 flex-col justify-center border-4 border-white bg-red-900 p-4 pb-4 text-center"
 >
   <div>
-    <pre class="font-quicksand font-semibold">{role}</pre>
-    <div class="mb-4 text-lg font-bold">
+    {
+      typeof img !== "string" ? (
+        <Image
+          src={img.sizes!.card!.url!}
+          alt={img.alt}
+          class="mx-auto"
+          width={img.sizes!.card!.width!}
+          height={img.sizes!.card!.height!}
+        />
+      ) : (
+        <div>Error fetching image</div>
+      )
+    }
+    <div
+      class="relative left-1/2 mb-2 mt-4 flex h-12 w-80 -translate-x-1/2 items-center justify-center bg-white text-2xl font-bold text-red-950"
+    >
       {name}
     </div>
-    <Image
-      src={images[imgPath]()}
-      alt={`Portrait of ${name}`}
-      class="mx-auto rounded-full"
-      height="250"
-    />
-    <p class="hidden">{bio}</p>
-    <button class="mx-auto mt-4 h-12 w-28 rounded bg-red-900 text-white"
-      >Biography</button
+    <div
+      class="font-quicskand mb-4 flex h-14 flex-col items-center justify-center text-lg font-semibold text-white"
     >
+      {roles.map((el) => <div>{el.role}</div>)}
+    </div>
+    <p class="hidden">{bio}</p>
+    <button class="secondary-button my-0">Biography</button>
   </div>
 </div>
+<script></script>

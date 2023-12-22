@@ -20,7 +20,7 @@ try {
   {
     cards.map((card: any) => (
       <Card
-        img={card.image.sizes.thumbnail.url}
+        img={card.image}
         header={card.header}
         body={card.body}
         link={`/${card.link.slug}`}
