@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import HeroSection from "../layouts/HeroSection.astro";
+import MainTitle from "../components/MainTitle.astro";
 import Quote from "../components/Quote.astro";
 import NavigationSection from "../layouts/NavigationSection.astro";
 import WelcomeSection from "../layouts/WelcomeSection.astro";
@@ -87,15 +88,11 @@ import "../../base.css";
     <Header />
     <HeroSection />
     <main>
-      <div class="text-red-900">
-        <h1 class="py-12 text-center text-3xl">
-          Jonang Takten Phuntsok Choeling Monastery
-        </h1>
-      </div>
+      <MainTitle />
       <Quote />
-      <NavigationSection />
       <WelcomeSection />
       <ProminenceSection />
+      <NavigationSection />
       <ActivitiesSection />
       <NewsSection />
       <TeachersSection />
