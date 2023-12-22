@@ -11,14 +11,18 @@ const data = await res.json();
   <Title title="Jonang Teachers" color="white" />
   <div class="cards-grid">
     {
-      data.docs.map((teacher: Teacher) => (
-        <BioCard
-          img={teacher!.portrait!}
-          name={teacher.name}
-          roles={teacher.roles!}
-          bio={teacher.shortBio!}
-        />
-      ))
+      data.docs
+        .sort(
+          (a: Teacher, b: Teacher) => a.orderOfAppearance - b.orderOfAppearance,
+        )
+        .map((teacher: Teacher) => (
+          <BioCard
+            img={teacher!.portrait!}
+            name={teacher.name}
+            roles={teacher.roles!}
+            bio={teacher.bioHtml!}
+          />
+        ))
     }
   </div>
 </section>
