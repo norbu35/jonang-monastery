@@ -13,10 +13,10 @@ const data = await res.json();
   >
     <SectionTitle title="Welcome" color="red" />
     <p
-      class="mx-auto text-center font-garamond text-2xl lg:max-w-3xl"
+      class="mx-auto max-w-sm text-justify font-garamond text-xl md:max-w-lg lg:max-w-3xl"
       set:html={data.body}
     />
-    <button class="primary-button mt-12 h-12 w-40"
+    <button class="primary-button mt-12 h-12 w-40 lg:mt-24"
       ><a href={data.buttonLink.slug}>More About Us</a></button
     >
   </div>
