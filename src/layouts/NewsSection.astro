@@ -1,5 +1,5 @@
 ---
-import Title from "../components/Title.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 import NewsCard from "../components/NewsCard.astro";
 import type { News } from "../../payload-types";
 
@@ -8,7 +8,7 @@ const data = await res.json();
 ---
 
 <section class="section-padding bg-gray-100">
-  <Title title="Latest News" color="darkgrey" />
+  <SectionTitle title="Latest News" color="darkgrey" />
   <div class="cards-grid pt-0 lg:grid-cols-4">
     {
       data.docs.map((news: News) => (

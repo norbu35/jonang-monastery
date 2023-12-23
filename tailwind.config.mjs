@@ -4,11 +4,14 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        "headerLinks": ["Quicksand", "sans-serif"],
+        "siteTitle": ["Bodoni Moda", "serif"],
+        "sectionTitle": ["Bodoni Moda", "sans-serif"],
         "tibetan": ["Noto Serif Tibetan", "sans-serif"],
-        "quicksand": ["Quicksand", "sans-serif"],
-        "garamond": ["Cormorant Garamond", "serif"],
-        "opensans": ["Open Sans", "sans-serif"],
-        "trirong": ["Trirong", "serif"],
+        "body": ["Lato", "sans-serif"],
+        "button": ["Segoe UI", "sans-serif"],
+        "quote": ["Cormorant Garamond", "sans-serif"],
+        "garamond": ["Cormorant Garamond", "sans-serif"],
       },
       colors: {},
     },

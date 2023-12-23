@@ -1,5 +1,5 @@
 ---
-import Title from "../components/Title.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 import { Image } from "astro:assets";
 
 import lecture from "../../src/assets/images/lecture.jpg";
@@ -16,8 +16,8 @@ const data = await res.json();
       class="h-full w-full object-cover"
     />
   </div>
-  <div class="section-padding md:w-1/2">
-    <Title title="Activities" color="darkgrey" />
+  <div class="section-padding text-justify font-body md:w-1/2">
+    <SectionTitle title="Activities" color="darkgrey" />
     <p
       class="mx-auto text-center lg:max-w-3xl"
       set:html={data.descriptionHtml}

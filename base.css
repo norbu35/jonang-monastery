@@ -22,11 +22,11 @@
 
 @layer components {
   .primary-button {
-    @apply hover:bg-red-800 focus:shadow-red-900 focus:outline-none active:bg-red-900 mx-auto h-10 w-28 rounded-xl bg-red-900 font-opensans my-4 text-white;
+    @apply hover:bg-red-800 focus:shadow-red-900 focus:outline-none active:bg-red-900 mx-auto h-10 w-28 rounded-lg bg-red-900 font-button my-4 text-white;
   }
 
   .secondary-button {
-    @apply mx-auto h-10 w-28 rounded-xl bg-yellow-600 font-opensans my-4 hover:bg-yellow-500 focus:shadow-yellow-600 focus:outline-none active:bg-yellow-500 text-white;
+    @apply mx-auto h-10 w-28 rounded-lg bg-yellow-600 font-button my-4 hover:bg-yellow-500 focus:shadow-yellow-600 focus:outline-none active:bg-yellow-500;
   }
 
   .cards-flex {
@@ -42,7 +42,7 @@
   }
 
   .section-header {
-    @apply mb-10 font-quicksand text-2xl md:text-3xl font-semibold text-center md:mb-12 lg:text-4xl lg:mb-24;
+    @apply mb-10 font-sectionTitle text-center md:mb-12 font-semibold lg:mb-24;
   }
 
   .article-container {

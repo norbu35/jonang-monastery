@@ -2,18 +2,19 @@
 import { Image } from "astro:assets";
 import type { Footer } from "../../payload-types";
 
+import NewsLetter from "./NewsLetter.astro";
+import Quote from "./Quote.astro";
+
 import kalachakraIcon from "../assets/icons/kalachakra-icon.webp";
 import kalachakraMantra from "../assets/icons/kalachakra-mantra.svg";
-import NewsLetter from "./NewsLetter.astro";
 
 const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/footer`);
 const data: Footer = await res.json();
 ---
 
+<Quote />
 <NewsLetter />
-<footer
-  class="flex flex-col items-center gap-10 bg-gray-200 p-6 px-4 pb-4 xl:pt-10"
->
+<footer class="flex flex-col items-center gap-10 p-6 px-4 pb-4 xl:pt-10">
   <div class="flex flex-col gap-10 xl:flex-row">
     <div class="flex flex-col items-center gap-2">
       <div class="flex flex-row gap-4">

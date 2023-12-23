@@ -1,5 +1,5 @@
 ---
-import Title from "../components/Title.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 import DonateCard from "../components/DonateCard.astro";
 
 import type { Donation } from "../../payload-types";
@@ -9,7 +9,7 @@ const data = await res.json();
 ---
 
 <section class="section-padding bg-gray-100">
-  <Title title="Support Us" color="red" />
+  <SectionTitle title="Support Us" color="red" />
   <div class="cards-grid">
     {
       data.docs.map((item: Donation) => (

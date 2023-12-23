@@ -8,10 +8,10 @@ const quote: Quote = quotes[Math.floor(Math.random() * data.totalDocs)];
 ---
 
 <figure
-  class="mx-auto max-w-md px-4 py-14 md:max-w-3xl md:px-10 md:py-28 md:text-xl lg:py-32 xl:max-w-4xl"
+  class="font-quote mx-auto max-w-md px-4 py-14 md:max-w-3xl md:px-10 md:py-28 md:text-xl lg:py-32 xl:max-w-4xl"
 >
   <blockquote
-    class="flex flex-col items-center justify-center gap-6 md:flex-row lg:gap-8 xl:gap-24"
+    class="flex flex-col items-center justify-center gap-6 text-lg md:flex-row md:text-xl lg:gap-8 xl:gap-24"
   >
     {
       quote?.originalQuoteHtml ? (
@@ -22,9 +22,9 @@ const quote: Quote = quotes[Math.floor(Math.random() * data.totalDocs)];
         />
       ) : null
     }
-    <div set:html={quote?.quoteHtml} class="font-garamond" />
+    <div set:html={quote?.quoteHtml} />
   </blockquote>
-  <figcaption class="mt-6 text-right font-garamond text-lg md:mt-16 md:text-xl">
+  <figcaption class="mt-6 text-right text-lg md:mt-16 md:text-xl">
     <cite>{quote?.source}</cite>
   </figcaption>
 </figure>

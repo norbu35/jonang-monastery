@@ -1,5 +1,5 @@
 ---
-import Title from "../components/Title.astro";
+import SectionTitle from "../components/SectionTitle.astro";
 import BioCard from "../components/BioCard.astro";
 import type { Teacher } from "../../payload-types";
 
@@ -8,7 +8,7 @@ const data = await res.json();
 ---
 
 <section class="section-padding bg-red-900 text-white">
-  <Title title="Jonang Teachers" color="white" />
+  <SectionTitle title="Jonang Teachers" color="white" />
   <div class="cards-grid">
     {
       data.docs
