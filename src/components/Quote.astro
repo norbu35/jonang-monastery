@@ -7,24 +7,26 @@ const quotes: Quote[] = data.docs;
 const quote: Quote = quotes[Math.floor(Math.random() * data.totalDocs)];
 ---
 
-<figure
-  class="mx-auto my-14 max-w-md px-4 font-quote md:max-w-3xl md:px-10 md:py-28 md:text-xl lg:py-32 xl:max-w-4xl"
->
-  <blockquote
-    class="flex flex-col items-center justify-center gap-8 text-lg md:flex-row md:text-xl lg:gap-8 xl:gap-24"
+<div class="bg-gradient-to-b from-gray-100 via-white via-20% py-14">
+  <figure
+    class="mx-auto max-w-md px-4 font-quote md:max-w-3xl md:px-10 md:py-16 md:text-xl xl:max-w-4xl"
   >
-    {
-      quote?.originalQuoteHtml ? (
-        <div
-          set:html={quote?.originalQuoteHtml}
-          lang={quote.originalQuoteLang}
-          class="font-tibetan text-lg md:text-xl"
-        />
-      ) : null
-    }
-    <div set:html={quote?.quoteHtml} />
-  </blockquote>
-  <figcaption class="mr-4 mt-12 text-right text-lg md:mt-20 md:text-xl">
-    <cite>{quote?.source}</cite>
-  </figcaption>
-</figure>
+    <blockquote
+      class="flex flex-col items-center justify-center gap-8 text-lg md:flex-row md:text-xl lg:gap-8 xl:gap-24"
+    >
+      {
+        quote?.originalQuoteHtml ? (
+          <div
+            set:html={quote?.originalQuoteHtml}
+            lang={quote.originalQuoteLang}
+            class="font-tibetan text-lg md:text-xl"
+          />
+        ) : null
+      }
+      <div set:html={quote?.quoteHtml} />
+    </blockquote>
+    <figcaption class="mr-4 mt-12 text-right text-lg md:mt-20 md:text-xl">
+      <cite>{quote?.source}</cite>
+    </figcaption>
+  </figure>
+</div>
