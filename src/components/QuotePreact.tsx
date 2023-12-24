@@ -6,7 +6,9 @@ function QuotePreact(
 ) {
   const randomQuote: () => Quote = () =>
     quotes[Math.floor(Math.random() * length)];
-  const [quote, _] = useState<Quote>(randomQuote());
+  const [quote, setQuote] = useState<Quote>(() => randomQuote());
+
+  setQuote(() => randomQuote());
 
   return (
     <figure class="mx-auto my-14 max-w-md px-4 font-quote md:max-w-3xl md:px-10 md:py-16 md:text-xl xl:max-w-4xl">
