@@ -317,6 +317,9 @@ export interface Header {
 export interface PageTitle {
   id: string;
   title: string;
+  secondaryTitle?: string | null;
+  logo?: string | Media | null;
+  subheading?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

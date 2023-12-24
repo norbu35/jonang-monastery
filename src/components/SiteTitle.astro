@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 
-const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/pageTitle`);
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/siteTitle`);
 const data = await res.json();
 ---
 
@@ -13,7 +13,7 @@ const data = await res.json();
   <div class="mx-auto w-60 md:w-72">
     <Image
       src={data.logo.url}
-      alt=""
+      alt={data.logo.alt}
       width={data.logo.width}
       height={data.logo.height}
       class="mx-auto"

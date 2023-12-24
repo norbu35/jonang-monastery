@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import downArrow from "/src/assets/icons/down-arrow.svg";
 
-const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/pageTitle`);
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/siteTitle`);
 const data = await res.json();
 ---
 
