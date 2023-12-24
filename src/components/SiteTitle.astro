@@ -1,15 +1,23 @@
 ---
 import { Image } from "astro:assets";
 
-import logo from "../../src/assets/icons/logo.webp";
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/pageTitle`);
+const data = await res.json();
 ---
 
 <div class="my-12 px-4 text-center text-red-900">
-  <h1 class="my-12 font-siteTitle text-4xl md:my-16 md:text-4xl">
-    Jonang Takten Phuntsok Choeling Monastery
-  </h1>
-  <Image src={logo} alt="" width="200" class="mx-auto" />
-  <div class="mt-4 italic md:text-lg">
-    The Land of Joy, Jonang Monastery, where the teachings flourish.
+  <h1
+    class="my-12 font-siteTitle text-4xl md:my-16 md:text-4xl"
+    set:html={data.secondaryTitle}
+  />
+  <div class="mx-auto w-60 md:w-72">
+    <Image
+      src={data.logo.url}
+      alt=""
+      width={data.logo.width}
+      height={data.logo.height}
+      class="mx-auto"
+    />
   </div>
+  <div class="mt-4 italic md:text-lg" set:html={data.subheading} />
 </div>
