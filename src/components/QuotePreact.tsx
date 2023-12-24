@@ -4,9 +4,11 @@ import type { Quote } from "../../payload-types";
 function QuotePreact(
   { quotes, length }: { quotes: Quote[]; length: number },
 ) {
-  const [quote] = useState<Quote | null>(
+  const [quote, setQuote] = useState<Quote | null>(
     quotes[Math.floor(Math.random() * length)],
   );
+
+  setQuote(quotes[Math.floor(Math.random() * length)]);
 
   return (
     <figure class="mx-auto my-14 max-w-md px-4 font-quote md:max-w-3xl md:px-10 md:py-16 md:text-xl xl:max-w-4xl">
