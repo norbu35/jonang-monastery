@@ -9,6 +9,7 @@ function QuotePreact(
     quotes[Math.floor(Math.random() * length)];
 
   setQuote(randomQuote());
+  console.log(quotes, quote);
 
   return (
     <figure class="mx-auto my-14 max-w-md px-4 font-quote md:max-w-3xl md:px-10 md:py-16 md:text-xl xl:max-w-4xl">
