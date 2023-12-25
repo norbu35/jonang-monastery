@@ -13,8 +13,8 @@ function QuotePreact(
   }, []);
 
   return (
-    <figure class="mx-auto my-14 max-w-md px-6 font-quote md:max-w-3xl md:px-10 md:py-16 md:text-xl xl:max-w-4xl">
-      <blockquote class="flex flex-col items-center justify-center gap-8 text-lg md:flex-row md:text-xl lg:gap-8 xl:gap-24">
+    <figure class="mx-auto max-w-lg px-6 py-12 font-quote md:max-w-3xl md:px-10 md:py-16 md:text-xl xl:max-w-4xl">
+      <blockquote class="flex flex-col flex-wrap items-center justify-center gap-y-4 text-lg md:flex-row md:gap-x-12 md:text-xl xl:gap-x-24 xl:gap-y-8">
         {quote?.originalQuoteHtml
           ? (
             <div
@@ -27,7 +27,9 @@ function QuotePreact(
           )
           : null}
         {quote && (
-          <div dangerouslySetInnerHTML={{ __html: quote?.quoteHtml! }} />
+          <div
+            dangerouslySetInnerHTML={{ __html: quote?.quoteHtml! }}
+          />
         )}
       </blockquote>
       <figcaption class="mr-4 mt-12 text-right text-lg md:mt-20 md:text-xl">

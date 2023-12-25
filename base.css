@@ -4,15 +4,43 @@
 
 @layer base {
   h2 {
-    @apply text-2xl;
+    @apply text-3xl my-4;
   }
 
   h3 {
-    @apply text-xl;
+    @apply text-2xl my-4;
   }
 
   h4 {
-    @apply text-lg;
+    @apply text-xl my-3;
+  }
+
+  h5 {
+    @apply text-lg font-semibold my-2;
+  }
+
+  h6 {
+    @apply text-lg my-2;
+  }
+
+  p {
+    @apply my-4 md:my-5;
+  }
+
+  ul {
+    @apply mb-4 list-disc list-inside;
+
+    li {
+      @apply my-2;
+    }
+  }
+
+  ol {
+    @apply mb-4 list-decimal list-inside;
+
+    li {
+      @apply my-2;
+    }
   }
 }
 
@@ -62,9 +90,14 @@
   .parallax {
     background-image: url("/src/assets/images/rite-sutra.webp");
     min-height: 80vh;
+    background-position-x: 49%;
+    background-position-y: bottom;
     background-attachment: fixed;
-    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    @media only screen and (min-width: 768px) {
+      background-image: url("/src/assets/images/main-entrance.webp");
+    }
   }
 }
