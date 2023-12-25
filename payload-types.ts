@@ -18,8 +18,8 @@ export interface Config {
     cards: Card;
     donations: Donation;
     quotes: Quote;
-    "payload-preferences": PayloadPreference;
-    "payload-migrations": PayloadMigration;
+    'payload-preferences': PayloadPreference;
+    'payload-migrations': PayloadMigration;
   };
   globals: {
     header: Header;
@@ -130,8 +130,8 @@ export interface Page {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       type: string;
       version: number;
@@ -156,8 +156,8 @@ export interface Newsletter {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       type: string;
       version: number;
@@ -178,8 +178,8 @@ export interface News {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       type: string;
       version: number;
@@ -194,11 +194,11 @@ export interface News {
 export interface Teacher {
   id: string;
   name: string;
+  orderOfAppearance: number;
   roles: {
     role?: string | null;
     id?: string | null;
   }[];
-  orderOfAppearance: number;
   portrait: string | Portrait;
   bio: {
     root: {
@@ -207,8 +207,8 @@ export interface Teacher {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       type: string;
       version: number;
@@ -247,8 +247,8 @@ export interface Quote {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       type: string;
       version: number;
@@ -264,8 +264,8 @@ export interface Quote {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       type: string;
       version: number;
@@ -281,14 +281,14 @@ export interface Quote {
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: "users";
+    relationTo: 'users';
     value: string | User;
   };
   key?: string | null;
   value?:
     | {
-      [k: string]: unknown;
-    }
+        [k: string]: unknown;
+      }
     | unknown[]
     | string
     | number
@@ -307,7 +307,15 @@ export interface PayloadMigration {
 export interface Header {
   id: string;
   navigation: {
-    page: string | Page;
+    navigationType?: ('link' | 'label') | null;
+    label?: string | null;
+    link?: (string | null) | Page;
+    sublinks?:
+      | {
+          page?: (string | null) | Page;
+          id?: string | null;
+        }[]
+      | null;
     id?: string | null;
   }[];
   logo: string | Media;
@@ -349,8 +357,8 @@ export interface Activity {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       type: string;
       version: number;
@@ -371,8 +379,8 @@ export interface Footer {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ("ltr" | "rtl") | null;
-      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
       indent: number;
       type: string;
       version: number;
@@ -387,3 +395,7 @@ export interface Footer {
   createdAt?: string | null;
 }
 
+
+declare module 'payload' {
+  export interface GeneratedTypes extends Config {}
+}

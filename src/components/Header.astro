@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { Header } from "../../payload-types";
 
 import hamburgerMenu from "../assets/icons/hamburger-menu.svg";
+import upArrow from "../assets/icons/up-arrow.svg";
 
 let data: Header;
 try {
@@ -53,7 +54,11 @@ try {
       {
         data.navigation.map((field: any) => (
           <li class="hover:text-yellow-500">
-            <a href={`/${field.page.slug}`}>{field.page.title}</a>
+            {field.link ? (
+              <a href={`/${field.link.slug}`}>{field.link.title}</a>
+            ) : (
+              field.label
+            )}
           </li>
         ))
       }
@@ -64,8 +69,14 @@ try {
     </ul>
   </div>
   <!-- Controls -->
-  <div class="md:hidden">
-    <button class="align-middle"><Image src={hamburgerMenu} alt="" /></button>
+  <div class="flex gap-4 md:hidden">
+    <button
+      class="hide max-h-[35px] transition-all duration-500 ease-in-out motion-reduce:transition-none align-middle"
+      id="topButton"><Image src={upArrow} alt="Up arrow icon" /></button
+    >
+    <button class="align-middle"
+      ><Image src={hamburgerMenu} alt="Hamburger menu icon" /></button
+    >
   </div>
 </header>
 
@@ -81,5 +92,19 @@ try {
     header.setAttribute("aria-hidden", scrollingUp ? "false" : "true");
 
     prevScrollPos = currentScrollPos;
+
+    const topButton = document.querySelector("#topButton");
+    topButton!.addEventListener("click", function () {
+      scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+
+    if (window.scrollY > window.innerHeight) {
+      topButton?.classList.remove("hide");
+    } else {
+      topButton?.classList.add("hide");
+    }
   });
 </script>
