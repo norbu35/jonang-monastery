@@ -144,9 +144,11 @@ const footer = await res.json();
     const isMenuOpen = header.classList.contains("h-screen");
 
     if (!isMenuOpen) {
+      document.body.classList.add("stop-scrolling");
       header.classList.add("h-screen", "max-h-full");
       menu.classList.add("h-full");
     } else {
+      document.body.classList.remove("stop-scrolling");
       menu.classList.remove("h-full");
       header.classList.remove("h-screen", "max-h-full");
       setTimeout(() => {

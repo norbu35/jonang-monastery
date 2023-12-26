@@ -42,6 +42,10 @@
       @apply my-2;
     }
   }
+
+  .stop-scrolling {
+    @apply h-full overflow-hidden;
+  }
 }
 
 @tailwind components;
