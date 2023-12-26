@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import type { Header } from "../../payload-types";
 
-import hamburgerMenu from "../assets/icons/hamburger-menu.svg";
 import upArrow from "../assets/icons/up-arrow.svg";
 
 let data: Header;
@@ -15,8 +14,6 @@ try {
 } catch (error: any) {
   throw Error(error.message);
 }
-const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/footer`);
-const footer = await res.json();
 ---
 
 <header
@@ -33,7 +30,7 @@ const footer = await res.json();
     >
       {
         data.navigation.map((field: any) => (
-          <li class="hover:text-yellow-500">
+          <li class="text-xl hover:text-yellow-500">
             {field.link ? (
               <a href={`/${field.link.slug}`}>{field.link.title}</a>
             ) : (
@@ -97,23 +94,55 @@ const footer = await res.json();
         >
       </ul>
     </div>
-    <!-- Controls -->
-    <div class="flex gap-4 md:hidden">
-      <button
-        class="hide max-h-[35px] transition-all duration-500 ease-in-out motion-reduce:transition-none"
-        id="topButton"><Image src={upArrow} alt="Up arrow icon" /></button
+    <button
+      class="hide max-h-[35px] transition-all duration-500 ease-in-out motion-reduce:transition-none"
+      id="topButton"><Image src={upArrow} alt="Up arrow icon" /></button
+    >
+    <button id="menuButton" class="group relative">
+      <div
+        class="relative flex h-[50px] w-[50px] transform items-center justify-center overflow-hidden transition-all duration-200"
       >
-      <button id="menuButton"
-        ><Image src={hamburgerMenu} alt="Hamburger menu icon" /></button
-      >
-    </div>
+        <div
+          class="flex h-[21px] w-[28px] origin-center transform flex-col justify-between overflow-hidden transition-all duration-300"
+        >
+          <div
+            class="h-[3px] w-9 origin-left transform rounded-xl bg-black transition-all duration-300 group-focus:translate-x-10"
+          >
+          </div>
+          <div
+            class="h-[3px] w-9 transform rounded-xl bg-black transition-all delay-75 duration-300 group-focus:translate-x-10"
+          >
+          </div>
+          <div
+            class="h-[3px] w-9 origin-left transform rounded-xl bg-black transition-all delay-150 duration-300 group-focus:translate-x-10"
+          >
+          </div>
+
+          <div
+            class="absolute top-2.5 flex w-0 -translate-x-10 transform items-center justify-between transition-all duration-500 group-focus:w-14 group-focus:translate-x-0"
+          >
+            <div
+              class="absolute h-[3px] w-7 rotate-0 transform bg-black transition-all delay-300 duration-500 group-focus:rotate-45"
+            >
+            </div>
+            <div
+              class="absolute h-[3px] w-7 -rotate-0 transform bg-black transition-all delay-300 duration-500 group-focus:-rotate-45"
+            >
+            </div>
+          </div>
+        </div>
+      </div>
+    </button>
+    <!-- <button id="menuButton" -->
+    <!--   ><Image src={hamburgerMenu} alt="Hamburger menu icon" /></button -->
+    <!-- > -->
   </div>
 </header>
 
 <script>
   const header = document.querySelector("#header")!;
   const menu = document.querySelector("#menu")!;
-  const menuButton = document.querySelector("#menuButton")!;
+  const menuButton: HTMLElement = document.querySelector("#menuButton")!;
   const topButton = document.querySelector("#topButton")!;
 
   let prevScrollPos = window.scrollY;
@@ -147,14 +176,21 @@ const footer = await res.json();
       document.body.classList.add("stop-scrolling");
       header.classList.add("h-screen", "max-h-full");
       menu.classList.add("h-full");
+      menu.addEventListener("click", handleMenuClick);
     } else {
       document.body.classList.remove("stop-scrolling");
+      menuButton.blur();
       menu.classList.remove("h-full");
       header.classList.remove("h-screen", "max-h-full");
       setTimeout(() => {
         header.classList.add("max-h-16");
       }, 500);
     }
+  }
+
+  function handleMenuClick(event: Event) {
+    event.stopPropagation();
+    toggleMenu();
   }
 
   window.addEventListener("scroll", handleScroll);
