@@ -15,73 +15,123 @@ try {
 } catch (error: any) {
   throw Error(error.message);
 }
+const res = await fetch(`${import.meta.env.CMS_API_URL}/globals/footer`);
+const footer = await res.json();
 ---
 
 <header
   id="header"
-  class="opacity-1 fixed bottom-0 z-10 flex max-h-16 w-full items-center justify-between bg-white p-2 transition-all duration-500 ease-in-out motion-reduce:transition-none md:top-0 md:max-h-20 md:justify-between md:shadow-lg lg:max-h-24"
+  class="opacity-1 fixed bottom-0 z-10 flex h-16 max-h-16 w-full flex-col justify-between bg-white transition md:top-0 md:h-20 md:max-h-20 md:justify-between md:shadow-lg lg:h-24 lg:max-h-24"
 >
-  <!-- Logo -->
-  <div class="basis-3/4 md:basis-1/3">
-    <a href="/" class="flex items-center justify-start gap-4">
-      <div class="md:w-18 w-14 lg:w-20">
-        {
-          typeof data.logo !== "string" ? (
-            <Image
-              src={data!.logo.url!}
-              alt={data.logo.alt}
-              width={data.logo.width!}
-              height={data.logo.height!}
-              class="float-right w-[80%]"
-            />
-          ) : (
-            <div>Error fetching data</div>
-          )
-        }
-      </div>
-      <div class="font-siteTitle text-gray-700 md:text-xl">
-        Jonang Takten<br /> Phuntsok Choeling
-      </div>
-    </a>
-  </div>
-  <!-- Menu -->
+  <!-- Mobile menu -->
   <div
-    class="hidden font-semibold text-gray-600 md:mr-2 md:block xl:mr-12 xl:text-xl"
+    id="menu"
+    class="flex h-0 flex-col overflow-hidden bg-yellow-600 font-semibold text-white transition"
   >
-    <ul
-      class="my-0 list-none items-center gap-3 font-headerLinks md:flex lg:gap-4 xl:gap-6"
-    >
-      {
-        data.navigation.map((field: any) => (
-          <li class="hover:text-yellow-500">
-            {field.link ? (
-              <a href={`/${field.link.slug}`}>{field.link.title}</a>
-            ) : (
-              field.label
-            )}
-          </li>
-        ))
-      }
+    <div class="flex h-full flex-col">
+      <div
+        id="contact"
+        class="flex h-0 w-full flex-col items-center gap-6 overflow-hidden pt-8 text-sm transition"
+      >
+        <address class="not-italic">
+          <div class="leading-tight" set:html={footer.addressHtml} />
+          <div class="mt-4 leading-tight">
+            {footer.email}<br />
+            {footer.phone}
+          </div>
+        </address>
+      </div>
+      <ul
+        class="flex h-full w-full origin-bottom list-none flex-col items-center justify-center gap-3 font-headerLinks transition"
+      >
+        {
+          data.navigation.map((field: any) => (
+            <li class="hover:text-yellow-500">
+              {field.link ? (
+                <a href={`/${field.link.slug}`}>{field.link.title}</a>
+              ) : (
+                field.label
+              )}
+            </li>
+          ))
+        }
+      </ul>
       <button
-        class="secondary-button rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600 lg:h-12 lg:text-[18px]"
+        class="secondary-button mb-8 h-16 rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600"
         >Donate</button
       >
-    </ul>
+    </div>
   </div>
-  <!-- Controls -->
-  <div class="flex gap-4 md:hidden">
-    <button
-      class="hide max-h-[35px] transition-all duration-500 ease-in-out motion-reduce:transition-none align-middle"
-      id="topButton"><Image src={upArrow} alt="Up arrow icon" /></button
+  <div
+    class="my-2 flex h-[48px] w-full items-center justify-between p-2 md:h-full"
+  >
+    <!-- Logo -->
+    <div class="basis-3/4 md:basis-1/3">
+      <a href="/" class="flex items-center justify-start gap-4">
+        <div class="md:w-18 w-14 lg:w-20">
+          {
+            typeof data.logo !== "string" ? (
+              <Image
+                src={data!.logo.url!}
+                alt={data.logo.alt}
+                width={data.logo.width!}
+                height={data.logo.height!}
+                class="float-right w-[80%]"
+              />
+            ) : (
+              <div>Error fetching data</div>
+            )
+          }
+        </div>
+        <div class="font-siteTitle text-gray-700 md:text-xl">
+          Jonang Takten<br /> Phuntsok Choeling
+        </div>
+      </a>
+    </div>
+    <!-- Large menu -->
+    <div
+      id="menu"
+      class="hidden h-0 items-center overflow-hidden font-semibold text-gray-600 md:mr-2 md:flex md:md:h-full xl:mr-12 xl:text-xl"
     >
-    <button class="align-middle"
-      ><Image src={hamburgerMenu} alt="Hamburger menu icon" /></button
-    >
+      <ul
+        class="my-0 list-none items-center gap-3 font-headerLinks md:flex lg:gap-4 xl:gap-6"
+      >
+        {
+          data.navigation.map((field: any) => (
+            <li class="hover:text-yellow-500">
+              {field.link ? (
+                <a href={`/${field.link.slug}`}>{field.link.title}</a>
+              ) : (
+                field.label
+              )}
+            </li>
+          ))
+        }
+        <button
+          class="secondary-button rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600 lg:h-12 lg:text-[18px]"
+          >Donate</button
+        >
+      </ul>
+    </div>
+    <!-- Controls -->
+    <div class="flex gap-4 md:hidden">
+      <button
+        class="hide max-h-[35px] transition-all duration-500 ease-in-out motion-reduce:transition-none"
+        id="topButton"><Image src={upArrow} alt="Up arrow icon" /></button
+      >
+      <button id="menuButton"
+        ><Image src={hamburgerMenu} alt="Hamburger menu icon" /></button
+      >
+    </div>
   </div>
 </header>
 
 <script>
   const header = document.querySelector("#header")!;
+  const menu = document.querySelector("#menu")!;
+  const contact = document.querySelector("#contact")!;
+  const menuButton = document.querySelector("#menuButton")!;
+  const topButton = document.querySelector("#topButton")!;
 
   let prevScrollPos = window.scrollY;
   window.addEventListener("scroll", () => {
@@ -93,18 +143,39 @@ try {
 
     prevScrollPos = currentScrollPos;
 
-    const topButton = document.querySelector("#topButton");
-    topButton!.addEventListener("click", function () {
-      scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    });
-
     if (window.scrollY > window.innerHeight) {
-      topButton?.classList.remove("hide");
+      topButton.classList.remove("hide");
     } else {
-      topButton?.classList.add("hide");
+      topButton.classList.add("hide");
+    }
+  });
+
+  topButton.addEventListener("click", function () {
+    scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  menuButton.addEventListener("click", function () {
+    if (!header.classList.contains("h-screen")) {
+      header.classList.remove("max-h-16");
+      header.classList.remove("h-16");
+      header.classList.add("h-screen");
+      menu.classList.remove("h-0");
+      menu.classList.add("h-full");
+      contact.classList.remove("h-0");
+      contact.classList.add("h-1/2");
+    } else {
+      menu.classList.remove("h-full");
+      menu.classList.add("h-0");
+      header.classList.add("h-16");
+      header.classList.remove("h-screen");
+      contact.classList.remove("h-1/2");
+      contact.classList.add("h-0");
+      setTimeout(() => {
+        header.classList.add("max-h-16");
+      }, 500);
     }
   });
 </script>
