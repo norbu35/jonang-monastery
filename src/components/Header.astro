@@ -21,50 +21,34 @@ const footer = await res.json();
 
 <header
   id="header"
-  class="opacity-1 fixed bottom-0 z-10 flex h-16 max-h-16 w-full flex-col justify-between bg-white transition md:top-0 md:h-20 md:max-h-20 md:justify-between md:shadow-lg lg:h-24 lg:max-h-24"
+  class="opacity-1 fixed bottom-0 z-10 flex h-16 max-h-16 w-full flex-col justify-between bg-white p-2 transition md:top-0 md:h-20 md:max-h-20 md:justify-between md:shadow-lg lg:h-24 lg:max-h-24"
 >
   <!-- Mobile menu -->
   <div
     id="menu"
-    class="flex h-0 flex-col overflow-hidden bg-yellow-600 font-semibold text-white transition"
+    class="flex h-0 flex-col items-end overflow-hidden font-semibold text-gray-600 transition"
   >
-    <div class="flex h-full flex-col">
-      <div
-        id="contact"
-        class="flex h-0 w-full flex-col items-center gap-6 overflow-hidden pt-8 text-sm transition"
-      >
-        <address class="not-italic">
-          <div class="leading-tight" set:html={footer.addressHtml} />
-          <div class="mt-4 leading-tight">
-            {footer.email}<br />
-            {footer.phone}
-          </div>
-        </address>
-      </div>
-      <ul
-        class="flex h-full w-full origin-bottom list-none flex-col items-center justify-center gap-3 font-headerLinks transition"
-      >
-        {
-          data.navigation.map((field: any) => (
-            <li class="hover:text-yellow-500">
-              {field.link ? (
-                <a href={`/${field.link.slug}`}>{field.link.title}</a>
-              ) : (
-                field.label
-              )}
-            </li>
-          ))
-        }
-      </ul>
+    <ul
+      class="bottom-0 flex h-full w-full origin-bottom list-none flex-col items-center justify-center font-headerLinks"
+    >
+      {
+        data.navigation.map((field: any) => (
+          <li class="hover:text-yellow-500">
+            {field.link ? (
+              <a href={`/${field.link.slug}`}>{field.link.title}</a>
+            ) : (
+              field.label
+            )}
+          </li>
+        ))
+      }
       <button
-        class="secondary-button mb-8 h-16 rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600"
+        class="secondary-button rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600 lg:h-12 lg:text-[18px]"
         >Donate</button
       >
-    </div>
+    </ul>
   </div>
-  <div
-    class="my-2 flex h-[48px] w-full items-center justify-between p-2 md:h-full"
-  >
+  <div class="flex h-[48px] w-full items-center justify-between md:h-full">
     <!-- Logo -->
     <div class="basis-3/4 md:basis-1/3">
       <a href="/" class="flex items-center justify-start gap-4">
@@ -129,12 +113,12 @@ const footer = await res.json();
 <script>
   const header = document.querySelector("#header")!;
   const menu = document.querySelector("#menu")!;
-  const contact = document.querySelector("#contact")!;
   const menuButton = document.querySelector("#menuButton")!;
   const topButton = document.querySelector("#topButton")!;
 
   let prevScrollPos = window.scrollY;
-  window.addEventListener("scroll", () => {
+
+  function handleScroll() {
     const currentScrollPos = window.scrollY;
     const scrollingUp = currentScrollPos < prevScrollPos;
 
@@ -143,39 +127,35 @@ const footer = await res.json();
 
     prevScrollPos = currentScrollPos;
 
-    if (window.scrollY > window.innerHeight) {
-      topButton.classList.remove("hide");
-    } else {
-      topButton.classList.add("hide");
-    }
-  });
+    topButton.classList.toggle(
+      "hide",
+      currentScrollPos <= window.innerHeight / 2,
+    );
+  }
 
-  topButton.addEventListener("click", function () {
+  function scrollToTop() {
     scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  });
+  }
 
-  menuButton.addEventListener("click", function () {
-    if (!header.classList.contains("h-screen")) {
-      header.classList.remove("max-h-16");
-      header.classList.remove("h-16");
-      header.classList.add("h-screen");
-      menu.classList.remove("h-0");
+  function toggleMenu() {
+    const isMenuOpen = header.classList.contains("h-screen");
+
+    if (!isMenuOpen) {
+      header.classList.add("h-screen", "max-h-full");
       menu.classList.add("h-full");
-      contact.classList.remove("h-0");
-      contact.classList.add("h-1/2");
     } else {
       menu.classList.remove("h-full");
-      menu.classList.add("h-0");
-      header.classList.add("h-16");
-      header.classList.remove("h-screen");
-      contact.classList.remove("h-1/2");
-      contact.classList.add("h-0");
+      header.classList.remove("h-screen", "max-h-full");
       setTimeout(() => {
         header.classList.add("max-h-16");
       }, 500);
     }
-  });
+  }
+
+  window.addEventListener("scroll", handleScroll);
+  topButton.addEventListener("click", scrollToTop);
+  menuButton.addEventListener("click", toggleMenu);
 </script>
