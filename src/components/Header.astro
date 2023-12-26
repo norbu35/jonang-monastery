@@ -75,6 +75,7 @@ try {
       class="hidden h-0 items-center overflow-hidden font-semibold text-gray-600 md:mr-2 md:flex md:md:h-full xl:mr-12 xl:text-xl"
     >
       <ul
+        id="nav"
         class="my-0 list-none items-center gap-3 font-headerLinks md:flex lg:gap-4 xl:gap-6"
       >
         {
@@ -141,7 +142,8 @@ try {
 
 <script>
   const header = document.querySelector("#header")!;
-  const menu = document.querySelector("#menu")!;
+  const menu = document.querySelector("#menu") as HTMLDivElement;
+  const nav = document.querySelector("#nav")!;
   const menuButton: HTMLElement = document.querySelector("#menuButton")!;
   const topButton = document.querySelector("#topButton")!;
 
@@ -188,9 +190,11 @@ try {
     }
   }
 
-  function handleMenuClick(event: Event) {
+  function handleMenuClick(event: MouseEvent) {
     event.stopPropagation();
-    toggleMenu();
+    if (!nav.contains(event.target as Node)) {
+      toggleMenu();
+    }
   }
 
   window.addEventListener("scroll", handleScroll);
