@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { Header } from "../../payload-types";
 
 import upArrow from "../assets/icons/up-arrow.svg";
+import extLink from "../assets/icons/external-link.svg";
 
 let data: Header;
 try {
@@ -23,24 +24,92 @@ try {
   <!-- Mobile menu -->
   <div
     id="menu"
-    class="flex h-0 flex-col items-end overflow-hidden font-semibold text-gray-600 transition"
+    class="flex h-0 flex-col items-end overflow-hidden text-center font-semibold text-gray-600 transition"
   >
     <ul
       class="bottom-0 flex h-full w-full origin-bottom list-none flex-col items-center justify-center font-headerLinks"
     >
       {
-        data.navigation.map((field: any) => (
-          <li class="text-2xl hover:text-yellow-500">
-            {field.link ? (
-              <a href={`/${field.link.slug}`}>{field.link.title}</a>
+        data.navigation.map((field) => (
+          <li class="text-2xl">
+            {field.page && typeof field.page !== "string" ? (
+              <a href={`/${field.page.slug}`} class="hover:text-yellow-500">
+                {field.page.title}
+              </a>
+            ) : field.url ? (
+              <a href={field.url} target="_blank" class="hover:text-yellow-500">
+                {field.linkLabel}
+                <svg
+                  class="inline"
+                  width="18px"
+                  height="18px"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g id="Interface / External_Link">
+                    <path
+                      id="Vector"
+                      d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                      stroke="#000000"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                </svg>
+              </a>
             ) : (
-              field.label
+              <span>{field.label}</span>
+            )}
+            {field.sublinks?.length !== 0 && (
+              <ul>
+                {field.sublinks?.map((sublink) => (
+                  <li class="list-none text-lg">
+                    {sublink.page && typeof sublink.page !== "string" ? (
+                      <a
+                        href={`/${sublink.page.slug}`}
+                        class="hover:text-yellow-500"
+                      >
+                        {sublink.page.title}
+                      </a>
+                    ) : (
+                      <a
+                        href={sublink.url}
+                        target="_blank"
+                        class="hover:text-yellow-500"
+                      >
+                        {sublink.linkLabel}
+                        <svg
+                          class="inline"
+                          width="18px"
+                          height="18px"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g id="Interface / External_Link">
+                            <path
+                              id="Vector"
+                              d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                              stroke="#000000"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </g>
+                        </svg>
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
             )}
           </li>
         ))
       }
       <button
-        class="secondary-button rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600 lg:h-12 lg:text-[18px]"
+        class="mt-12 h-[3rem] w-[8rem] rounded bg-yellow-500 text-xl text-white drop-shadow-lg hover:bg-yellow-600"
         >Donate</button
       >
     </ul>
@@ -90,7 +159,7 @@ try {
           ))
         }
         <button
-          class="secondary-button rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600 lg:h-12 lg:text-[18px]"
+          class="secondary-button h-20 w-32 rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600"
           >Donate</button
         >
       </ul>
