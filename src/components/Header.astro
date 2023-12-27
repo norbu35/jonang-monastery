@@ -164,8 +164,9 @@ try {
               ) : (
                 <span>{field.label}</span>
               )}
+              <!-- Submenu -->
               {field.sublinks?.length !== 0 && (
-                <ul class="group absolute top-[60px] bg-white px-4 pb-4 pt-8 opacity-0 transition-opacity duration-200 ease-linear group-hover:opacity-100 lg:top-[66px] lg:px-6 lg:pb-6 lg:pt-10">
+                <ul class="group absolute -left-full -top-full bg-white px-8 pb-4 pt-8 opacity-0 transition-opacity duration-200 ease-linear group-hover:left-[initial] group-hover:top-[60px] group-hover:opacity-100 lg:top-[66px] lg:px-6 lg:pb-6 lg:pt-10">
                   {field.sublinks?.map((sublink: any) => (
                     <li class="list-none text-lg">
                       {sublink.page && typeof sublink.page !== "string" ? (
