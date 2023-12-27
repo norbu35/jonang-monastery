@@ -140,25 +140,78 @@ try {
     <!-- Large menu -->
     <div
       id="menu"
-      class="hidden h-0 items-center overflow-hidden font-semibold text-gray-600 md:mr-2 md:flex md:md:h-full xl:mr-12 xl:text-xl"
+      class="mr-2 hidden h-0 items-center font-semibold text-gray-600 md:flex md:h-full xl:mr-12 xl:text-[18px]"
     >
       <ul
         id="nav"
-        class="my-0 list-none items-center gap-3 font-headerLinks md:flex lg:gap-4 xl:gap-6"
+        class="my-0 h-full list-none items-center justify-evenly gap-3 font-headerLinks text-[16px] md:flex lg:gap-4 lg:text-xl xl:gap-6"
       >
         {
           data.navigation.map((field: any) => (
-            <li class="hover:text-yellow-500">
-              {field.link ? (
-                <a href={`/${field.link.slug}`}>{field.link.title}</a>
+            <li class="group flex h-full items-center justify-center">
+              {field.page && typeof field.page !== "string" ? (
+                <a href={`/${field.page.slug}`} class="hover:text-yellow-500">
+                  {field.page.title}
+                </a>
+              ) : field.url ? (
+                <a
+                  href={field.url}
+                  target="_blank"
+                  class="hover:text-yellow-500"
+                >
+                  {field.linkLabel}
+                </a>
               ) : (
-                field.label
+                <span>{field.label}</span>
+              )}
+              {field.sublinks?.length !== 0 && (
+                <ul class="group absolute top-[60px] bg-white px-4 pb-4 pt-8 opacity-0 transition-opacity duration-200 ease-linear group-hover:opacity-100 lg:top-[66px] lg:px-6 lg:pb-6 lg:pt-10">
+                  {field.sublinks?.map((sublink: any) => (
+                    <li class="list-none text-lg">
+                      {sublink.page && typeof sublink.page !== "string" ? (
+                        <a
+                          href={`/${sublink.page.slug}`}
+                          class="hover:text-yellow-500"
+                        >
+                          {sublink.page.title}
+                        </a>
+                      ) : (
+                        <a
+                          href={sublink.url}
+                          target="_blank"
+                          class="hover:text-yellow-500"
+                        >
+                          {sublink.linkLabel}
+                          <svg
+                            class="inline"
+                            width="18px"
+                            height="18px"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <g id="Interface / External_Link">
+                              <path
+                                id="Vector"
+                                d="M10.0002 5H8.2002C7.08009 5 6.51962 5 6.0918 5.21799C5.71547 5.40973 5.40973 5.71547 5.21799 6.0918C5 6.51962 5 7.08009 5 8.2002V15.8002C5 16.9203 5 17.4801 5.21799 17.9079C5.40973 18.2842 5.71547 18.5905 6.0918 18.7822C6.5192 19 7.07899 19 8.19691 19H15.8031C16.921 19 17.48 19 17.9074 18.7822C18.2837 18.5905 18.5905 18.2839 18.7822 17.9076C19 17.4802 19 16.921 19 15.8031V14M20 9V4M20 4H15M20 4L13 11"
+                                stroke="#000000"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                              />
+                            </g>
+                          </svg>
+                        </a>
+                      )}
+                    </li>
+                  ))}
+                </ul>
               )}
             </li>
           ))
         }
         <button
-          class="secondary-button h-20 w-32 rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600"
+          class="h-10 w-28 rounded bg-yellow-500 text-gray-700 drop-shadow-lg hover:bg-yellow-600 lg:h-12"
           >Donate</button
         >
       </ul>
