@@ -69,6 +69,19 @@ AstroJS - works well with the CMS, is extensible and fast.
 
 # Challanges & Solutions
 
+## Live Preview in Payload
+
+A live preview of the website can be activated in Payload. The Live Preview
+loads in a iframe element into the Payload interface which sets a React
+application as its source, and sends data from Payload through
+window.postMessage events. With this activated, users of the CMS can see the
+changes they're making immediately without having to rebuild the page.
+
+As the website is build with AstroJS and not React, it will need to be converted
+into React for the Live Preview to work. The solution is to convert the AstroJS
+website into a React application with Vite and run it in dev mode on the server
+alongside Payload.
+
 ## Newsletter
 
 The sending out of newsletters will be handled without any additional libraries.

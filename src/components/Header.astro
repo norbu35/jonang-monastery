@@ -132,7 +132,7 @@ try {
             )
           }
         </div>
-        <div class="font-siteTitle text-[18px] leading-6 text-gray-700">
+        <div class="font-siteTitle text-[18px] leading-6 text-gray-700 lg:text-[24px] lg:leading-8">
           Jonang Takten<br /> Phuntsok Choeling
         </div>
       </a>
@@ -166,7 +166,7 @@ try {
               )}
               <!-- Submenu -->
               {field.sublinks?.length !== 0 && (
-                <ul class="group absolute -left-full -top-full bg-white px-8 pb-4 pt-8 opacity-0 transition-opacity duration-200 ease-linear group-hover:left-[initial] group-hover:top-[60px] group-hover:opacity-100 lg:top-[66px] lg:px-6 lg:pb-6 lg:pt-10">
+                <ul class="group absolute -left-full -top-full flex flex-col gap-2 bg-white px-8 pb-4 pt-8 opacity-0 transition-opacity duration-200 ease-linear group-hover:left-[initial] group-hover:top-[60px] group-hover:opacity-100 lg:top-[66px] lg:px-6 lg:pb-6 lg:pt-10 lg:pt-12">
                   {field.sublinks?.map((sublink: any) => (
                     <li class="list-none text-lg">
                       {sublink.page && typeof sublink.page !== "string" ? (
