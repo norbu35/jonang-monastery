@@ -108,4 +108,8 @@
       background-image: url("/src/assets/images/main-entrance.webp");
     }
   }
+
+  .focus {
+    @apply focus:outline-none focus:outline-2 focus:outline-red-900 focus:outline-offset-4;
+  }
 }

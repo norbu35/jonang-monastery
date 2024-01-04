@@ -18,19 +18,23 @@ try {
 
 <header
   id="header"
+  aria-label="Site header"
   class="opacity-1 fixed bottom-0 z-10 flex h-16 max-h-16 w-full flex-col justify-between border-t border-gray-300 bg-white p-2 transition md:top-0 md:h-20 md:max-h-20 md:justify-between md:shadow-lg lg:h-24 lg:max-h-24"
 >
   <!-- Mobile menu -->
-  <div
+  <nav
     id="menu"
-    class="flex h-0 flex-col items-end overflow-hidden text-center font-semibold text-gray-600 transition"
+    class="flex h-0 flex-col items-center justify-center overflow-hidden text-center font-semibold text-gray-600 transition"
+    aria-label="Navigation menu"
+    aria-hidden="true"
+    tabindex="0"
   >
     <ul
       class="bottom-0 flex h-full w-full origin-bottom list-none flex-col items-center justify-center font-headerLinks"
     >
       {
         data.navigation.map((field) => (
-          <li class="text-2xl">
+          <li class="focus text-2xl">
             {field.page && typeof field.page !== "string" ? (
               <a href={`/${field.page.slug}`} class="hover:text-yellow-500">
                 {field.page.title}
@@ -59,10 +63,10 @@ try {
                 </svg>
               </a>
             ) : (
-              <span>{field.label}</span>
+                  <div aria-label={field.label}>{field.label}</div>
             )}
             {field.sublinks?.length !== 0 && (
-              <ul>
+              <ul aria-label="submenu">
                 {field.sublinks?.map((sublink) => (
                   <li class="list-none text-lg">
                     {sublink.page && typeof sublink.page !== "string" ? (
@@ -108,16 +112,16 @@ try {
         ))
       }
       <button
-        class="mt-12 h-[3rem] w-[8rem] rounded bg-yellow-500 text-xl text-white drop-shadow-lg hover:bg-yellow-600"
+        class="mt-12 h-[3rem] w-[8rem] rounded bg-yellow-500 text-xl drop-shadow-lg hover:bg-yellow-600"
         >Donate</button
       >
     </ul>
-  </div>
+  </nav>
   <div class="flex h-[48px] w-full items-center justify-between md:h-full">
     <!-- Logo -->
     <div class="basis-3/4 md:basis-1/3">
-      <a href="/" class="flex items-center justify-start gap-4">
-        <div class="md:w-18 w-16 lg:w-20">
+      <a href="/" class="focus flex items-center justify-start gap-4" aria-label="Homepage">
+        <div class="md:w-18 w-16 lg:w-20" aria-hidden="true">
           {
             typeof data.logo !== "string" ? (
               <Image
@@ -132,14 +136,13 @@ try {
             )
           }
         </div>
-        <div class="font-siteTitle text-[18px] leading-6 text-gray-700 lg:text-[24px] lg:leading-8">
+        <div class="font-siteTitle text-[18px] leading-6 text-gray-700 lg:text-[24px] lg:leading-8" aria-hidden="true">
           Jonang Takten<br /> Phuntsok Choeling
         </div>
       </a>
     </div>
     <!-- Large menu -->
-    <div
-      id="menu"
+    <nav
       class="mr-2 hidden h-0 items-center font-semibold text-gray-600 md:flex md:h-full xl:mr-12 xl:text-[18px]"
     >
       <ul
@@ -150,7 +153,7 @@ try {
           data.navigation.map((field: any) => (
             <li class="group flex h-full items-center justify-center">
               {field.page && typeof field.page !== "string" ? (
-                <a href={`/${field.page.slug}`} class="hover:text-yellow-500">
+                <a href={`/${field.page.slug}`} class="focus rounded hover:text-yellow-500">
                   {field.page.title}
                 </a>
               ) : field.url ? (
@@ -162,11 +165,11 @@ try {
                   {field.linkLabel}
                 </a>
               ) : (
-                <span>{field.label}</span>
+                    <div aria-label={field.label} tabindex="0" class="focus rounded">{field.label}</div>
               )}
               <!-- Submenu -->
               {field.sublinks?.length !== 0 && (
-                <ul class="group absolute -left-full -top-full flex flex-col gap-2 bg-white px-8 pb-4 pt-8 opacity-0 transition-opacity duration-200 ease-linear group-hover:left-[initial] group-hover:top-[60px] group-hover:opacity-100 lg:top-[66px] lg:px-6 lg:pb-6 lg:pt-10 lg:pt-12">
+                <ul class="group absolute -left-full -top-full flex flex-col gap-2 bg-white px-8 pb-4 pt-8 opacity-0 transition-opacity duration-200 ease-linear group-hover:left-[initial] group-hover:top-[60px] group-hover:opacity-100 lg:top-[66px] lg:px-6 lg:pb-6 lg:pt-12">
                   {field.sublinks?.map((sublink: any) => (
                     <li class="list-none text-lg">
                       {sublink.page && typeof sublink.page !== "string" ? (
@@ -216,15 +219,20 @@ try {
           >Donate</button
         >
       </ul>
-    </div>
+    </nav>
+    <!-- controls -->
     <div class="flex items-center gap-4 md:hidden">
       <button
+        id="topButton"
         class="hide max-h-[35px] transition-all duration-500 ease-in-out motion-reduce:transition-none"
-        id="topButton"><Image src={upArrow} alt="Up arrow icon" /></button
+        aria-hidden="true"
+        aria-controls="mobileMenu"
+        ><Image src={upArrow} alt="Up arrow icon" /></button
       >
-      <button id="menuButton" class="group relative">
+      <button id="menuButton" class="group relative" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
         <div
           class="relative flex h-[50px] w-[50px] transform items-center justify-center overflow-hidden transition-all duration-200"
+          aria-hidden="true"
         >
           <div
             class="duration-30 transition-all0 flex h-[21px] w-[28px] origin-center transform flex-col justify-between overflow-hidden"
@@ -298,11 +306,15 @@ try {
     if (!isMenuOpen) {
       document.body.classList.add("stop-scrolling");
       header.classList.add("h-screen", "max-h-full");
+      menu.setAttribute('aria-hidden', 'false');
+      menuButton.setAttribute('aria-expanded', 'true');
       menu.classList.add("h-full");
       menu.addEventListener("click", handleMenuClick);
     } else {
       document.body.classList.remove("stop-scrolling");
       menuButton.blur();
+      menu.setAttribute('aria-hidden', 'true');
+      menuButton.setAttribute('aria-expanded', 'false');
       menu.classList.remove("h-full");
       header.classList.remove("h-screen", "max-h-full");
       setTimeout(() => {
@@ -323,6 +335,12 @@ try {
       toggleMenu();
     }
   }
+  
+  menu.addEventListener("keydown", (event: KeyboardEvent) => {
+    if (event.code === "Enter" || event.code === "Space") {
+      toggleMenu();
+    }
+  })
 
   window.addEventListener("scroll", handleScroll);
   topButton.addEventListener("click", scrollToTop);
