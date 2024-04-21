@@ -27,17 +27,18 @@ export async function getStaticPaths() {
 `,
     );
     const body = `${newsList.join(" ")}`;
-  //   return news
-  //     .map(({ slug, headline, bodyHtml }) => ({
-  //       params: { slug },
-  //       props: { headline, bodyHtml },
-  //     }))
-  //     .concat({
-  //       params: { slug: undefined },
-  //       props: { headline: "News Archive", bodyHtml: body },
-  //     });
+    //   return news
+    //     .map(({ slug, headline, bodyHtml }) => ({
+    //       params: { slug },
+    //       props: { headline, bodyHtml },
+    //     }))
+    //     .concat({
+    //       params: { slug: undefined },
+    //       props: { headline: "News Archive", bodyHtml: body },
+    //     });
   } catch (error: any) {
-    console.error(error); 
+    throw Error(error);
+  }
 }
 
 const { headline, bodyHtml } = Astro.props;
