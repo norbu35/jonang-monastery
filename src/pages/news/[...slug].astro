@@ -36,8 +36,8 @@ export async function getStaticPaths() {
   //       params: { slug: undefined },
   //       props: { headline: "News Archive", bodyHtml: body },
   //     });
-  // } catch (error: any) {
-    
+  } catch (error: any) {
+    console.error(error); 
 }
 
 const { headline, bodyHtml } = Astro.props;

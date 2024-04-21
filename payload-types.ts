@@ -18,8 +18,8 @@ export interface Config {
     cards: Card;
     donations: Donation;
     quotes: Quote;
-    'payload-preferences': PayloadPreference;
-    'payload-migrations': PayloadMigration;
+    "payload-preferences": PayloadPreference;
+    "payload-migrations": PayloadMigration;
   };
   globals: {
     header: Header;
@@ -30,6 +30,10 @@ export interface Config {
     footer: Footer;
   };
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
 export interface User {
   id: string;
   updatedAt: string;
@@ -43,6 +47,10 @@ export interface User {
   lockUntil?: string | null;
   password?: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "media".
+ */
 export interface Media {
   id: string;
   alt: string;
@@ -81,6 +89,10 @@ export interface Media {
     };
   };
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "portraits".
+ */
 export interface Portrait {
   id: string;
   alt: string;
@@ -119,6 +131,10 @@ export interface Portrait {
     };
   };
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages".
+ */
 export interface Page {
   id: string;
   slug: string;
@@ -130,8 +146,8 @@ export interface Page {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
       indent: number;
       type: string;
       version: number;
@@ -147,6 +163,10 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "newsletters".
+ */
 export interface Newsletter {
   id: string;
   body?: {
@@ -156,8 +176,8 @@ export interface Newsletter {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
       indent: number;
       type: string;
       version: number;
@@ -168,6 +188,10 @@ export interface Newsletter {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
 export interface News {
   id: string;
   slug: string;
@@ -179,8 +203,8 @@ export interface News {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
       indent: number;
       type: string;
       version: number;
@@ -192,6 +216,10 @@ export interface News {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "teachers".
+ */
 export interface Teacher {
   id: string;
   name: string;
@@ -208,8 +236,8 @@ export interface Teacher {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
       indent: number;
       type: string;
       version: number;
@@ -220,6 +248,10 @@ export interface Teacher {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "cards".
+ */
 export interface Card {
   id: string;
   header: string;
@@ -229,6 +261,10 @@ export interface Card {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "donations".
+ */
 export interface Donation {
   id: string;
   headline: string;
@@ -238,6 +274,10 @@ export interface Donation {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quotes".
+ */
 export interface Quote {
   id: string;
   title: string;
@@ -248,8 +288,8 @@ export interface Quote {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
       indent: number;
       type: string;
       version: number;
@@ -265,8 +305,8 @@ export interface Quote {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
       indent: number;
       type: string;
       version: number;
@@ -279,10 +319,14 @@ export interface Quote {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-preferences".
+ */
 export interface PayloadPreference {
   id: string;
   user: {
-    relationTo: 'users';
+    relationTo: "users";
     value: string | User;
   };
   key?: string | null;
@@ -298,6 +342,10 @@ export interface PayloadPreference {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "payload-migrations".
+ */
 export interface PayloadMigration {
   id: string;
   name?: string | null;
@@ -305,17 +353,21 @@ export interface PayloadMigration {
   updatedAt: string;
   createdAt: string;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header".
+ */
 export interface Header {
   id: string;
   navigation: {
-    navigationType?: ('page' | 'label' | 'link') | null;
+    navigationType?: ("page" | "label" | "link") | null;
     page?: (string | null) | Page;
     label?: string | null;
     linkLabel?: string | null;
     url?: string | null;
     sublinks?:
       | {
-          navigationType?: ('page' | 'link') | null;
+          navigationType?: ("page" | "link") | null;
           page?: (string | null) | Page;
           linkLabel?: string | null;
           url?: string | null;
@@ -328,6 +380,10 @@ export interface Header {
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "siteTitle".
+ */
 export interface SiteTitle {
   id: string;
   title: string;
@@ -337,6 +393,10 @@ export interface SiteTitle {
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "introText".
+ */
 export interface IntroText {
   id: string;
   body: string;
@@ -344,6 +404,10 @@ export interface IntroText {
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "prominence".
+ */
 export interface Prominence {
   id: string;
   photo: string | Portrait;
@@ -354,6 +418,10 @@ export interface Prominence {
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "activities".
+ */
 export interface Activity {
   id: string;
   description?: {
@@ -363,8 +431,8 @@ export interface Activity {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
       indent: number;
       type: string;
       version: number;
@@ -376,6 +444,10 @@ export interface Activity {
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
 export interface Footer {
   id: string;
   address?: {
@@ -385,8 +457,8 @@ export interface Footer {
         version: number;
         [k: string]: unknown;
       }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      direction: ("ltr" | "rtl") | null;
+      format: "left" | "start" | "center" | "right" | "end" | "justify" | "";
       indent: number;
       type: string;
       version: number;
@@ -401,7 +473,7 @@ export interface Footer {
   createdAt?: string | null;
 }
 
+// declare module "payload" {
+//   export interface GeneratedTypes extends Config {}
+// }
 
-declare module 'payload' {
-  export interface GeneratedTypes extends Config {}
-}
