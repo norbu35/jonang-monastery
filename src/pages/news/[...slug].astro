@@ -16,7 +16,7 @@ export async function getStaticPaths() {
     const newsList = news.map(
       (el) => `
         <div>
-          ${new Date(el.createdAt).toLocaleString().split(",")[0]}
+        ${new Date(el.createdAt).toLocaleString().split(",")[0]}
         </div>
         <div>
           ${el.headline}
@@ -27,18 +27,17 @@ export async function getStaticPaths() {
 `,
     );
     const body = `${newsList.join(" ")}`;
-    return news
-      .map(({ slug, headline, bodyHtml }) => ({
-        params: { slug },
-        props: { headline, bodyHtml },
-      }))
-      .concat({
-        params: { slug: undefined },
-        props: { headline: "News Archive", bodyHtml: body },
-      });
-  } catch (error: any) {
-    throw Error(error);
-  }
+  //   return news
+  //     .map(({ slug, headline, bodyHtml }) => ({
+  //       params: { slug },
+  //       props: { headline, bodyHtml },
+  //     }))
+  //     .concat({
+  //       params: { slug: undefined },
+  //       props: { headline: "News Archive", bodyHtml: body },
+  //     });
+  // } catch (error: any) {
+    
 }
 
 const { headline, bodyHtml } = Astro.props;
