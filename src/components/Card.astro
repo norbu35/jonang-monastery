@@ -78,13 +78,14 @@ const { img, header, body, link } = Astro.props;
     constructor() {
       super();
 
-      const link = this.dataset.link!;
+      const link = this.dataset.link;
       const card = document.querySelector("#card")! as HTMLElement;
 
       card.addEventListener("keydown", (event: KeyboardEvent) => {
         if (event.code === "Enter" || event.code === "Space") {
           event.preventDefault();
           location.assign(link);
+          console.log(link);
         }
       });
     }
